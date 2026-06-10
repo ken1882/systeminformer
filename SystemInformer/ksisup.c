@@ -2485,7 +2485,7 @@ NTSTATUS KsiCheckKernelSupportThread(
 
     if (!NT_SUCCESS(status = PhHttpInitialize(&httpContext)))
         goto CleanupExit;
-    if (!NT_SUCCESS(status = PhHttpConnect(httpContext, L"imagemanager.io", PH_HTTP_DEFAULT_HTTPS_PORT)))
+    if (!NT_SUCCESS(status = PhHttpConnect(httpContext, L"systeminformer.io", PH_HTTP_DEFAULT_HTTPS_PORT)))
         goto CleanupExit;
     if (!NT_SUCCESS(status = PhHttpBeginRequest(httpContext, L"POST", L"/ksiver", PH_HTTP_FLAG_SECURE)))
         goto CleanupExit;
