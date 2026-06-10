@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2022 Winsider Seminars & Solutions, Inc.  All rights reserved.
  *
- * This file is part of System Informer.
+ * This file is part of Image Manager.
  *
  * Authors:
  *
@@ -1039,7 +1039,7 @@ VOID PhMipRefresh(
     )
 {
     if (PhMipPinned)
-        SystemInformer_Refresh();
+        ImageManager_Refresh();
 
     PostMessage(PhMipWindow, MIP_MSG_UPDATE, 0, 0);
 }
@@ -1824,7 +1824,7 @@ BOOLEAN PhMipListSectionTreeNewCallback(
                     }
 
                     SetFocus(listSection->TreeNewHandle);
-                    //SystemInformer_Refresh();
+                    //ImageManager_Refresh();
                     //PostMessage(PhMipWindow, MIP_MSG_UPDATE, 0, 0);
 
                     {
@@ -1870,7 +1870,7 @@ BOOLEAN PhMipListSectionTreeNewCallback(
                     }
 
                     SetFocus(listSection->TreeNewHandle);
-                    //SystemInformer_Refresh();
+                    //ImageManager_Refresh();
                     //PostMessage(PhMipWindow, MIP_MSG_UPDATE, 0, 0);
 
                     {
@@ -2057,8 +2057,8 @@ VOID PhMipHandleListSectionCommand(
             PhPinMiniInformation(MiniInfoActivePinType, -1, 0, 0, NULL, NULL);
             PhPinMiniInformation(MiniInfoHoverPinType, -1, 0, 0, NULL, NULL);
 
-            SystemInformer_ToggleVisible(TRUE);
-            SystemInformer_SelectTabPage(0);
+            ImageManager_ToggleVisible(TRUE);
+            ImageManager_SelectTabPage(0);
             PhSelectAndEnsureVisibleProcessNodes((PPH_PROCESS_NODE*)nodes->Items, nodes->Count);
             PhDereferenceObject(nodes);
 

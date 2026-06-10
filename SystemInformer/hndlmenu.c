@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2022 Winsider Seminars & Solutions, Inc.  All rights reserved.
  *
- * This file is part of System Informer.
+ * This file is part of Image Manager.
  *
  * Authors:
  *
@@ -222,7 +222,7 @@ VOID PhShowHandleObjectProperties1(
 
             if (targetProcessItem)
             {
-                SystemInformer_ShowProcessProperties(targetProcessItem);
+                ImageManager_ShowProcessProperties(targetProcessItem);
                 PhDereferenceObject(targetProcessItem);
             }
             else
@@ -314,7 +314,7 @@ VOID PhShowHandleObjectProperties1(
                     showMemoryEditor->SelectLength = 0;
                     showMemoryEditor->Title = sectionName ? PhConcatStrings2(L"Section - ", sectionName->Buffer) : PhCreateString(L"Section");
                     showMemoryEditor->Flags = PH_MEMORY_EDITOR_UNMAP_VIEW_OF_SECTION;
-                    SystemInformer_ShowMemoryEditor(showMemoryEditor);
+                    ImageManager_ShowMemoryEditor(showMemoryEditor);
                 }
                 else
                 {
@@ -418,7 +418,7 @@ VOID PhShowHandleObjectProperties1(
                 propContext = PhCreateProcessPropContext(NULL, targetProcessItem);
                 PhDereferenceObject(targetProcessItem);
                 PhSetSelectThreadIdProcessPropContext(propContext, clientId.UniqueThread);
-                SystemInformer_Invoke(PhpShowProcessPropContext, propContext);
+                ImageManager_Invoke(PhpShowProcessPropContext, propContext);
             }
             else
             {

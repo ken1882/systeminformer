@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2022 Winsider Seminars & Solutions, Inc.  All rights reserved.
  *
- * This file is part of System Informer.
+ * This file is part of Image Manager.
  *
  * Authors:
  *
@@ -186,7 +186,7 @@ LOGICAL DllMain(
                 return FALSE;
 
             info->DisplayName = L"Update Checker";
-            info->Description = L"Plugin for checking new System Informer releases via the Help menu.";
+            info->Description = L"Plugin for checking new Image Manager releases via the Help menu.";
 
             PhRegisterCallback(
                 PhGetGeneralCallback(GeneralCallbackMainWindowShowing),

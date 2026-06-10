@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2022 Winsider Seminars & Solutions, Inc.  All rights reserved.
  *
- * This file is part of System Informer.
+ * This file is part of Image Manager.
  *
  * Authors:
  *
@@ -909,7 +909,7 @@ INT_PTR CALLBACK PhPluginsDlgProc(
 //            ParentWindowHandle,
 //            L"Plugins are not enabled.",
 //            L"%s",
-//            L"To use plugins enable them in Options and restart System Informer."
+//            L"To use plugins enable them in Options and restart Image Manager."
 //            );
 //    }
 //}

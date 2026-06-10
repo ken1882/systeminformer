@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2022 Winsider Seminars & Solutions, Inc.  All rights reserved.
  *
- * This file is part of System Informer.
+ * This file is part of Image Manager.
  *
  * Authors:
  *
@@ -846,7 +846,7 @@ VOID PhpProcessThreadsSave(
     PPH_PROCESS_ITEM processItem;
 
     processItem = PhReferenceProcessItem(ThreadsContext->Provider->ProcessId);
-    PhInitFormatS(&format[0], L"System Informer (");
+    PhInitFormatS(&format[0], L"Image Manager (");
     PhInitFormatS(&format[1], PhGetStringOrDefault(processItem->ProcessName, L"Unknown process"));
     PhInitFormatS(&format[2], L") Threads");
     PhInitFormatS(&format[3], L".txt");

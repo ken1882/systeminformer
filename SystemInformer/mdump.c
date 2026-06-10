@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2022 Winsider Seminars & Solutions, Inc.  All rights reserved.
  *
- * This file is part of System Informer.
+ * This file is part of Image Manager.
  *
  * Authors:
  *
@@ -459,7 +459,7 @@ NTSTATUS PhpProcessMiniDumpThreadStart(
                 context->WindowHandle,
                 TD_YES_BUTTON | TD_NO_BUTTON,
                 TD_WARNING_ICON,
-                L"The 32-bit version of System Informer could not be located.",
+                L"The 32-bit version of Image Manager could not be located.",
                 L"A 64-bit dump will be created instead. Do you want to continue?"
                 ) == IDNO)
             {
@@ -485,7 +485,7 @@ NTSTATUS PhpProcessMiniDumpThreadStart(
                 L"Unable to create kernel minidump.",
                 L"%s",
                 L"Kernel minidump of processes require administrative privileges. "
-                L"Make sure System Informer is running with administrative privileges."
+                L"Make sure Image Manager is running with administrative privileges."
                 );
         }
     }

@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2022 Winsider Seminars & Solutions, Inc.  All rights reserved.
  *
- * This file is part of System Informer.
+ * This file is part of Image Manager.
  *
  * Authors:
  *
@@ -593,7 +593,7 @@ INT_PTR CALLBACK PhpMemoryResultsDlgProc(
                                     showMemoryEditor->SelectOffset = (ULONG)((ULONG_PTR)result->Address - (ULONG_PTR)basicInfo.BaseAddress);
                                     showMemoryEditor->SelectLength = (ULONG)result->Length;
 
-                                    SystemInformer_ShowMemoryEditor(showMemoryEditor);
+                                    ImageManager_ShowMemoryEditor(showMemoryEditor);
                                 }
 
                                 NtClose(processHandle);
@@ -673,7 +673,7 @@ INT_PTR CALLBACK PhpMemoryResultsDlgProc(
                                                     showMemoryEditor->SelectOffset = (ULONG)((ULONG_PTR)result->Address - (ULONG_PTR)basicInfo.BaseAddress);
                                                     showMemoryEditor->SelectLength = (ULONG)result->Length;
 
-                                                    SystemInformer_ShowMemoryEditor(showMemoryEditor);
+                                                    ImageManager_ShowMemoryEditor(showMemoryEditor);
                                                 }
 
                                                 NtClose(processHandle);

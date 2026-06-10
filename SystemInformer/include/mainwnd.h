@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2022 Winsider Seminars & Solutions, Inc.  All rights reserved.
  *
- * This file is part of System Informer.
+ * This file is part of Image Manager.
  *
  * Authors:
  *
@@ -90,80 +90,80 @@ PhPluginInvokeWindowCallback(
     _In_opt_ PVOID lparam
     );
 
-#define SystemInformer_Destroy() \
+#define ImageManager_Destroy() \
     PhPluginInvokeWindowCallback(PH_MAINWINDOW_CALLBACK_TYPE_DESTROY, 0, 0)
-#define SystemInformer_ShowProcessProperties(ProcessItem) \
+#define ImageManager_ShowProcessProperties(ProcessItem) \
     PhPluginInvokeWindowCallback(PH_MAINWINDOW_CALLBACK_TYPE_SHOW_PROPERTIES, 0, (PVOID)(ULONG_PTR)(ProcessItem))
-#define SystemInformer_ShowOptions(SectionName) \
+#define ImageManager_ShowOptions(SectionName) \
     PhPluginInvokeWindowCallback(PH_MAINWINDOW_CALLBACK_TYPE_SHOW_OPTIONS, 0, (PVOID)(ULONG_PTR)(SectionName))
-#define SystemInformer_SaveAllSettings() \
+#define ImageManager_SaveAllSettings() \
     PhPluginInvokeWindowCallback(PH_MAINWINDOW_CALLBACK_TYPE_SAVE_ALL_SETTINGS, 0, 0)
-#define SystemInformer_PrepareForEarlyShutdown() \
+#define ImageManager_PrepareForEarlyShutdown() \
     PhPluginInvokeWindowCallback(PH_MAINWINDOW_CALLBACK_TYPE_PREPARE_FOR_EARLY_SHUTDOWN, 0, 0)
-#define SystemInformer_CancelEarlyShutdown() \
+#define ImageManager_CancelEarlyShutdown() \
     PhPluginInvokeWindowCallback(PH_MAINWINDOW_CALLBACK_TYPE_CANCEL_EARLY_SHUTDOWN, 0, 0)
-#define SystemInformer_ToggleVisible(AlwaysShow) \
+#define ImageManager_ToggleVisible(AlwaysShow) \
     PhPluginInvokeWindowCallback(PH_MAINWINDOW_CALLBACK_TYPE_TOGGLE_VISIBLE, (PVOID)(ULONG_PTR)(AlwaysShow), 0)
-#define SystemInformer_ShowMemoryEditor(ShowMemoryEditor) \
+#define ImageManager_ShowMemoryEditor(ShowMemoryEditor) \
     PhPluginInvokeWindowCallback(PH_MAINWINDOW_CALLBACK_TYPE_SHOW_MEMORY_EDITOR, 0, (PVOID)(ULONG_PTR)(ShowMemoryEditor))
-#define SystemInformer_ShowMemoryResults(ShowMemoryResults) \
+#define ImageManager_ShowMemoryResults(ShowMemoryResults) \
     PhPluginInvokeWindowCallback(PH_MAINWINDOW_CALLBACK_TYPE_SHOW_MEMORY_RESULTS, 0, (PVOID)(ULONG_PTR)(ShowMemoryResults))
-#define SystemInformer_SelectTabPage(Index) \
+#define ImageManager_SelectTabPage(Index) \
     PhPluginInvokeWindowCallback(PH_MAINWINDOW_CALLBACK_TYPE_SELECT_TAB_PAGE, 0, (PVOID)(ULONG_PTR)(Index))
-#define SystemInformer_GetCallbackLayoutPadding() \
+#define ImageManager_GetCallbackLayoutPadding() \
     ((PPH_CALLBACK)PhPluginInvokeWindowCallback(PH_MAINWINDOW_CALLBACK_TYPE_GET_CALLBACK_LAYOUT_PADDING, 0, 0))
-#define SystemInformer_InvalidateLayoutPadding() \
+#define ImageManager_InvalidateLayoutPadding() \
     PhPluginInvokeWindowCallback(PH_MAINWINDOW_CALLBACK_TYPE_INVALIDATE_LAYOUT_PADDING, 0, 0)
-#define SystemInformer_SelectProcessNode(ProcessNode) \
+#define ImageManager_SelectProcessNode(ProcessNode) \
     PhPluginInvokeWindowCallback(PH_MAINWINDOW_CALLBACK_TYPE_SELECT_PROCESS_NODE, 0, (PVOID)(ULONG_PTR)(ProcessNode))
-#define SystemInformer_SelectServiceItem(ServiceItem) \
+#define ImageManager_SelectServiceItem(ServiceItem) \
     PhPluginInvokeWindowCallback(PH_MAINWINDOW_CALLBACK_TYPE_SELECT_SERVICE_ITEM, 0, (PVOID)(ULONG_PTR)(ServiceItem))
-#define SystemInformer_SelectNetworkItem(NetworkItem) \
+#define ImageManager_SelectNetworkItem(NetworkItem) \
     PhPluginInvokeWindowCallback(PH_MAINWINDOW_CALLBACK_TYPE_SELECT_NETWORK_ITEM, 0, (PVOID)(ULONG_PTR)(NetworkItem))
-#define SystemInformer_UpdateFont() \
+#define ImageManager_UpdateFont() \
     PhPluginInvokeWindowCallback(PH_MAINWINDOW_CALLBACK_TYPE_UPDATE_FONT, 0, 0)
-#define SystemInformer_GetFont() \
+#define ImageManager_GetFont() \
     ((HFONT)PhPluginInvokeWindowCallback(PH_MAINWINDOW_CALLBACK_TYPE_GET_FONT, 0, 0))
-#define SystemInformer_Invoke(Function, Parameter) \
+#define ImageManager_Invoke(Function, Parameter) \
     PhPluginInvokeWindowCallback(PH_MAINWINDOW_CALLBACK_TYPE_INVOKE, (PVOID)(ULONG_PTR)(Parameter), (PVOID)(ULONG_PTR)(Function))
-//#define SystemInformer_Post(Function, Parameter) \
+//#define ImageManager_Post(Function, Parameter) \
 //    PhPluginInvokeWindowCallback(PH_MAINWINDOW_CALLBACK_TYPE_POST, (PVOID)(ULONG_PTR)(Parameter), (PVOID)(ULONG_PTR)(Function))
-//#define SystemInformer_CreateTabPage(Template) \
+//#define ImageManager_CreateTabPage(Template) \
 //    PhPluginInvokeWindowCallback(PH_MAINWINDOW_CALLBACK_TYPE_CREATE_TAB_PAGE, 0, (PVOID)(ULONG_PTR)(Template))
-#define SystemInformer_Refresh() \
+#define ImageManager_Refresh() \
     PhPluginInvokeWindowCallback(PH_MAINWINDOW_CALLBACK_TYPE_REFRESH, 0, 0)
-#define SystemInformer_GetUpdateAutomatically() \
+#define ImageManager_GetUpdateAutomatically() \
     ((BOOLEAN)PtrToUlong(PhPluginInvokeWindowCallback(PH_MAINWINDOW_CALLBACK_TYPE_GET_UPDATE_AUTOMATICALLY, 0, 0)))
-#define SystemInformer_SetUpdateAutomatically(Value) \
+#define ImageManager_SetUpdateAutomatically(Value) \
     PhPluginInvokeWindowCallback(PH_MAINWINDOW_CALLBACK_TYPE_SET_UPDATE_AUTOMATICALLY, (PVOID)(ULONG_PTR)(Value), 0)
-#define SystemInformer_IconClick() \
+#define ImageManager_IconClick() \
     PhPluginInvokeWindowCallback(PH_MAINWINDOW_CALLBACK_TYPE_ICON_CLICK, 0, 0)
-#define SystemInformer_GetInstanceHandle() \
+#define ImageManager_GetInstanceHandle() \
     ((PVOID)PhPluginInvokeWindowCallback(PH_MAINWINDOW_CALLBACK_TYPE_WINDOW_BASE, 0, 0))
-#define SystemInformer_GetWindowProcedure() \
+#define ImageManager_GetWindowProcedure() \
     ((WNDPROC)PhPluginInvokeWindowCallback(PH_MAINWINDOW_CALLBACK_TYPE_GETWINDOW_PROCEDURE, 0, 0))
-#define SystemInformer_SetWindowProcedure(Value) \
+#define ImageManager_SetWindowProcedure(Value) \
     PhPluginInvokeWindowCallback(PH_MAINWINDOW_CALLBACK_TYPE_SETWINDOW_PROCEDURE, (PVOID)(ULONG_PTR)(Value), 0)
-#define SystemInformer_GetWindowHandle() \
+#define ImageManager_GetWindowHandle() \
     ((HWND)PhPluginInvokeWindowCallback(PH_MAINWINDOW_CALLBACK_TYPE_WINDOW_HANDLE, 0, 0))
-#define SystemInformer_GetWindowsVersion() \
+#define ImageManager_GetWindowsVersion() \
     (PtrToUlong(PhPluginInvokeWindowCallback(PH_MAINWINDOW_CALLBACK_TYPE_VERSION, 0, 0)))
-#define SystemInformer_IsPortableMode() \
+#define ImageManager_IsPortableMode() \
     ((BOOLEAN)PtrToUlong(PhPluginInvokeWindowCallback(PH_MAINWINDOW_CALLBACK_TYPE_PORTABLE, 0, 0)))
-#define SystemInformer_GetTabIndex(Value) \
+#define ImageManager_GetTabIndex(Value) \
     (PtrToUlong(PhPluginInvokeWindowCallback(PH_MAINWINDOW_CALLBACK_TYPE_PAGEINDEX, (PVOID)(ULONG_PTR)(Value), 0)))
-#define SystemInformer_GetWindowDpi() \
+#define ImageManager_GetWindowDpi() \
     (PtrToUlong(PhPluginInvokeWindowCallback(PH_MAINWINDOW_CALLBACK_TYPE_WINDOWDPI, 0, 0)))
-#define SystemInformer_GetWindowName() \
+#define ImageManager_GetWindowName() \
     (PWSTR)(PhPluginInvokeWindowCallback(PH_MAINWINDOW_CALLBACK_TYPE_WINDOWNAME, 0, 0))
-#define SystemInformer_GetMainMenu() \
+#define ImageManager_GetMainMenu() \
     ((PPH_EMENU)PhPluginInvokeWindowCallback(PH_MAINWINDOW_CALLBACK_TYPE_GET_MAIN_MENU, 0, 0))
-#define SystemInformer_GetMainSubMenu(Index) \
+#define ImageManager_GetMainSubMenu(Index) \
     ((PPH_EMENU)PhPluginInvokeWindowCallback(PH_MAINWINDOW_CALLBACK_TYPE_GET_MAIN_SUBMENU, (PVOID)(ULONG_PTR)(Index), 0))
-#define SystemInformer_SetMainSubCmd(Index, Context) \
+#define ImageManager_SetMainSubCmd(Index, Context) \
     PhPluginInvokeWindowCallback(PH_MAINWINDOW_CALLBACK_TYPE_SET_MAIN_SUBCMD, (PVOID)(ULONG_PTR)(Index), (PVOID)Context)
 
-#define PhWindowsVersion SystemInformer_GetWindowsVersion() // Temporary backwards compat (dmex)
+#define PhWindowsVersion ImageManager_GetWindowsVersion() // Temporary backwards compat (dmex)
 // end_phapppub
 
 // begin_phapppub

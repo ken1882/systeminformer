@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2022 Winsider Seminars & Solutions, Inc.  All rights reserved.
  *
- * This file is part of System Informer.
+ * This file is part of Image Manager.
  *
  * Authors:
  *
@@ -1514,7 +1514,7 @@ VOID PhpShowMemoryEditor(
         showMemoryEditor->SelectOffset = (ULONG)((ULONG_PTR)address - (ULONG_PTR)basicInfo.BaseAddress);
         showMemoryEditor->SelectLength = (ULONG)length;
 
-        SystemInformer_ShowMemoryEditor(showMemoryEditor);
+        ImageManager_ShowMemoryEditor(showMemoryEditor);
     }
     else
     {

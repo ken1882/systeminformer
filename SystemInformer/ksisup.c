@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2022 Winsider Seminars & Solutions, Inc.  All rights reserved.
  *
- * This file is part of System Informer.
+ * This file is part of Image Manager.
  *
  * Authors:
  *
@@ -802,7 +802,7 @@ VOID KsiCreateRandomizedName(
 }
 
 /**
- * Creates and connects to the System Informer service.
+ * Creates and connects to the Image Manager service.
  *
  * \return Successful or errant status.
  */
@@ -822,7 +822,7 @@ NTSTATUS KsiSvcConnectToServer(
     if (!(fileName = PhGetApplicationFileNameWin32()))
         return STATUS_UNSUCCESSFUL;
 
-    KsiCreateRandomizedName(L"SystemInformer_", &serviceName, FALSE);
+    KsiCreateRandomizedName(L"ImageManager_", &serviceName, FALSE);
 
     commandLine = PhFormatString(
         L"\"%s\" -ras \"%s\"",
@@ -1584,7 +1584,7 @@ NTSTATUS KsiConnect(
             STATUS_SI_KSIDLL_VERSION_MISMATCH,
             FALSE,
             L"Unable to load kernel driver",
-            L"The last System Informer update requires a reboot."
+            L"The last Image Manager update requires a reboot."
             );
         goto CleanupExit;
     }
@@ -1863,7 +1863,7 @@ VOID KsiShowInitializingSplashScreen(
     config.hMainIcon = PhGetApplicationIcon(FALSE, USER_DEFAULT_SCREEN_DPI);
     config.pfCallback = KsiSplashScreenDialogCallbackProc;
     config.pszWindowTitle = PhApplicationName;
-    config.pszMainInstruction = L"Initializing System Informer kernel driver...";
+    config.pszMainInstruction = L"Initializing Image Manager kernel driver...";
     config.pszContent = L"0 ms...";
     config.cxWidth = 200;
 
@@ -2485,7 +2485,7 @@ NTSTATUS KsiCheckKernelSupportThread(
 
     if (!NT_SUCCESS(status = PhHttpInitialize(&httpContext)))
         goto CleanupExit;
-    if (!NT_SUCCESS(status = PhHttpConnect(httpContext, L"systeminformer.io", PH_HTTP_DEFAULT_HTTPS_PORT)))
+    if (!NT_SUCCESS(status = PhHttpConnect(httpContext, L"imagemanager.io", PH_HTTP_DEFAULT_HTTPS_PORT)))
         goto CleanupExit;
     if (!NT_SUCCESS(status = PhHttpBeginRequest(httpContext, L"POST", L"/ksiver", PH_HTTP_FLAG_SECURE)))
         goto CleanupExit;

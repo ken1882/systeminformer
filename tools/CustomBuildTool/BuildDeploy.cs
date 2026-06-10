@@ -72,12 +72,12 @@ namespace CustomBuildTool
             // Define the files to upload (bool true create hash and signature)
             var Build_Upload_Files = new Dictionary<string, bool>(4, StringComparer.OrdinalIgnoreCase)
             {
-                ["systeminformer-build-win32-bin.zip"] = true,
-                ["systeminformer-build-win64-bin.zip"] = true,
-                ["systeminformer-build-arm64-bin.zip"] = true,
-                //["systeminformer-build-bin.zip"] = true,
-                ["systeminformer-build-pdb.zip"] = false,
-                //["systeminformer-build-release-setup.exe"] = true,
+                ["imagemanager-build-win32-bin.zip"] = true,
+                ["imagemanager-build-win64-bin.zip"] = true,
+                ["imagemanager-build-arm64-bin.zip"] = true,
+                //["imagemanager-build-bin.zip"] = true,
+                ["imagemanager-build-pdb.zip"] = false,
+                //["imagemanager-build-release-setup.exe"] = true,
             };
 
             List<DeployFile> deployFiles = new List<DeployFile>();
@@ -85,9 +85,9 @@ namespace CustomBuildTool
             // N.B. HACK we only produce a "release" (default setting) build for the binary (portable).
             // Sign it using the "release" key. (jxy-s)
 
-            var portable_zip = CreateBuildDeployFile("release", "systeminformer-build-bin.zip", Path.Join([Build.BuildOutputFolder, "systeminformer-build-bin.zip"]));
-            var release_exe = CreateBuildDeployFile("release", "systeminformer-build-release-setup.exe", Path.Join([Build.BuildOutputFolder, "systeminformer-build-release-setup.exe"]));
-            var canary_exe = CreateBuildDeployFile("canary", "systeminformer-build-canary-setup.exe", Path.Join([Build.BuildOutputFolder, "systeminformer-build-canary-setup.exe"]));
+            var portable_zip = CreateBuildDeployFile("release", "imagemanager-build-bin.zip", Path.Join([Build.BuildOutputFolder, "imagemanager-build-bin.zip"]));
+            var release_exe = CreateBuildDeployFile("release", "imagemanager-build-release-setup.exe", Path.Join([Build.BuildOutputFolder, "imagemanager-build-release-setup.exe"]));
+            var canary_exe = CreateBuildDeployFile("canary", "imagemanager-build-canary-setup.exe", Path.Join([Build.BuildOutputFolder, "imagemanager-build-canary-setup.exe"]));
 
             if (portable_zip == null || release_exe == null || canary_exe == null)
             {
@@ -117,9 +117,9 @@ namespace CustomBuildTool
 
             // Check assets uploaded to github
             var github_release_id = githubMirrorUpload.ReleaseId.ToString();
-            var binzipdownloadlink = githubMirrorUpload.GetFileUrl("systeminformer-build-bin.zip"); // $"systeminformer-{Build.BuildLongVersion}-bin.zip"
-            var relzipdownloadlink = githubMirrorUpload.GetFileUrl("systeminformer-build-release-setup.exe");
-            var canzipdownloadlink = githubMirrorUpload.GetFileUrl("systeminformer-build-canary-setup.exe");
+            var binzipdownloadlink = githubMirrorUpload.GetFileUrl("imagemanager-build-bin.zip"); // $"imagemanager-{Build.BuildLongVersion}-bin.zip"
+            var relzipdownloadlink = githubMirrorUpload.GetFileUrl("imagemanager-build-release-setup.exe");
+            var canzipdownloadlink = githubMirrorUpload.GetFileUrl("imagemanager-build-canary-setup.exe");
 
             if (
                 string.IsNullOrWhiteSpace(github_release_id) ||

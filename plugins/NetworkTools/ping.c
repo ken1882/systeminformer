@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2022 Winsider Seminars & Solutions, Inc.  All rights reserved.
  *
- * This file is part of System Informer.
+ * This file is part of Image Manager.
  *
  * Authors:
  *
@@ -725,7 +725,7 @@ NTSTATUS NetworkPingDialogThreadStart(
         {
             if (message.wParam == VK_F5)
             {
-                SystemInformer_Refresh();  // forward key messages (dmex)
+                ImageManager_Refresh();  // forward key messages (dmex)
             }
         }
 

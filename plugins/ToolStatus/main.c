@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2022 Winsider Seminars & Solutions, Inc.  All rights reserved.
  *
- * This file is part of System Informer.
+ * This file is part of Image Manager.
  *
  * Authors:
  *
@@ -441,7 +441,7 @@ VOID InvalidateMainWindowLayout(
     )
 {
     // Invalidate plugin window layout.
-    SystemInformer_InvalidateLayoutPadding();
+    ImageManager_InvalidateLayoutPadding();
 
     // Invalidate the main window layout.
     MainWindowHookProc(MainWindowHandle, WM_SIZE, 0, 0);
@@ -452,7 +452,7 @@ VOID UpdateDpiMetrics(
     )
 {
     // Update fonts/sizes for new DPI.
-    ToolbarWindowFont = SystemInformer_GetFont();
+    ToolbarWindowFont = ImageManager_GetFont();
 
     if (RebarHandle)
     {
@@ -513,7 +513,7 @@ VOID UpdateLayoutMetrics(
     VOID
     )
 {
-    ToolbarWindowFont = SystemInformer_GetFont();
+    ToolbarWindowFont = ImageManager_GetFont();
 
     if (ToolBarHandle)
     {
@@ -684,7 +684,7 @@ VOID SetSearchFocus(
         {
             if (SearchBoxDisplayMode == SEARCHBOX_DISPLAY_MODE_HIDEINACTIVE)
             {
-                LONG dpiValue = SystemInformer_GetWindowDpi();
+                LONG dpiValue = ImageManager_GetWindowDpi();
 
                 if (!RebarBandExists(REBAR_BAND_ID_SEARCHBOX))
                 {
@@ -741,7 +741,7 @@ LRESULT CALLBACK MainWindowCallbackProc(
         {
             TaskbarMainWndExiting = TRUE;
 
-            SystemInformer_SetWindowProcedure(MainWindowHookProc);
+            ImageManager_SetWindowProcedure(MainWindowHookProc);
             PhSetWindowProcedure(WindowHandle, MainWindowHookProc);
         }
         break;
@@ -752,10 +752,10 @@ LRESULT CALLBACK MainWindowCallbackProc(
         break;
     case WM_DPICHANGED:
         {
-            // Let System Informer perform the default processing.
+            // Let Image Manager perform the default processing.
             LRESULT result = MainWindowHookProc(WindowHandle, WindowMessage, wParam, lParam);
 
-            SystemInformer_Invoke(UpdateDpiMetrics, NULL);
+            ImageManager_Invoke(UpdateDpiMetrics, NULL);
 
             return result;
         }
@@ -799,9 +799,9 @@ LRESULT CALLBACK MainWindowCallbackProc(
 
                             if (node = PhFindProcessNode(UlongToHandle(RestoreSearchSelectedProcessId)))
                             {
-                                SystemInformer_SelectTabPage(0);
-                                SystemInformer_SelectProcessNode(node);
-                                SystemInformer_ToggleVisible(FALSE);
+                                ImageManager_SelectTabPage(0);
+                                ImageManager_SelectProcessNode(node);
+                                ImageManager_ToggleVisible(FALSE);
                             }
 
                             RestoreSearchSelectedProcessId = ULONG_MAX;
@@ -851,7 +851,7 @@ LRESULT CALLBACK MainWindowCallbackProc(
                 goto DefaultWndProc;
             case PHAPP_ID_VIEW_ALWAYSONTOP:
                 {
-                    // Let System Informer perform the default processing.
+                    // Let Image Manager perform the default processing.
                     LRESULT result = MainWindowHookProc(WindowHandle, WindowMessage, wParam, lParam);
 
                     // Query the settings.
@@ -869,7 +869,7 @@ LRESULT CALLBACK MainWindowCallbackProc(
             case PHAPP_ID_UPDATEINTERVAL_SLOW:
             case PHAPP_ID_UPDATEINTERVAL_VERYSLOW:
                 {
-                    // Let System Informer perform the default processing.
+                    // Let Image Manager perform the default processing.
                     LRESULT result = MainWindowHookProc(WindowHandle, WindowMessage, wParam, lParam);
 
                     StatusBarUpdate(TRUE);
@@ -950,7 +950,7 @@ LRESULT CALLBACK MainWindowCallbackProc(
                                 PPH_EMENU_ITEM menuItem;
                                 LONG dpiValue;
 
-                                dpiValue = SystemInformer_GetWindowDpi();
+                                dpiValue = ImageManager_GetWindowDpi();
 
                                 // Add toolbar buttons to the context menu.
                                 menuItem = PhCreateEMenuItem(0, buttonInfo.idCommand, ToolbarGetText(buttonInfo.idCommand), NULL, NULL);
@@ -1084,7 +1084,7 @@ LRESULT CALLBACK MainWindowCallbackProc(
 
                             if (toolbarDisplayInfo->iImage == I_IMAGECALLBACK)
                             {
-                                LONG dpiValue = SystemInformer_GetWindowDpi();
+                                LONG dpiValue = ImageManager_GetWindowDpi();
 
                                 // We didn't find a cached bitmap index...
                                 // Load the button bitmap and cache the index.
@@ -1385,9 +1385,9 @@ LRESULT CALLBACK MainWindowCallbackProc(
 
                         if (processNode = PhFindProcessNode(clientId.UniqueProcess))
                         {
-                            SystemInformer_SelectTabPage(0);
-                            //SystemInformer_SelectProcessNode(processNode);
-                            //SystemInformer_ToggleVisible(FALSE);
+                            ImageManager_SelectTabPage(0);
+                            //ImageManager_SelectProcessNode(processNode);
+                            //ImageManager_ToggleVisible(FALSE);
                             PhSelectAndEnsureVisibleProcessNode(processNode);
                         }
 
@@ -1411,7 +1411,7 @@ LRESULT CALLBACK MainWindowCallbackProc(
                                 }
                                 else
                                 {
-                                    PhShowError2(WindowHandle, SystemInformer_GetWindowName(), L"The process (PID %lu) does not exist.", HandleToUlong(clientId.UniqueProcess));
+                                    PhShowError2(WindowHandle, ImageManager_GetWindowName(), L"The process (PID %lu) does not exist.", HandleToUlong(clientId.UniqueProcess));
                                 }
                             }
                             break;
@@ -1426,7 +1426,7 @@ LRESULT CALLBACK MainWindowCallbackProc(
                                 }
                                 else
                                 {
-                                    PhShowError2(WindowHandle, SystemInformer_GetWindowName(), L"The process (PID %lu) does not exist.", HandleToUlong(clientId.UniqueProcess));
+                                    PhShowError2(WindowHandle, ImageManager_GetWindowName(), L"The process (PID %lu) does not exist.", HandleToUlong(clientId.UniqueProcess));
                                 }
                             }
                             break;
@@ -1466,7 +1466,7 @@ LRESULT CALLBACK MainWindowCallbackProc(
     case WM_SIZE:
         {
             // Invalidate plugin window layouts.
-            SystemInformer_InvalidateLayoutPadding();
+            ImageManager_InvalidateLayoutPadding();
         }
         break;
     case WM_SETTINGCHANGE:
@@ -1598,7 +1598,7 @@ LRESULT CALLBACK MainWindowCallbackProc(
             if (!ToolStatusConfig.SearchAutoFocus)
                 break;
 
-            // Let System Informer perform the default processing.
+            // Let Image Manager perform the default processing.
             LRESULT result = MainWindowHookProc(WindowHandle, WindowMessage, wParam, lParam);
 
             // This fixes the search focus for the 'Hide when closed' option. See GH #663 (dmex)
@@ -1637,7 +1637,7 @@ LRESULT CALLBACK MainWindowCallbackProc(
             if (!ToolStatusConfig.SearchAutoFocus)
                 break;
 
-            // Let System Informer perform the default processing. (dmex)
+            // Let Image Manager perform the default processing. (dmex)
             LRESULT result = MainWindowHookProc(WindowHandle, WindowMessage, wParam, lParam);
 
             // Re-focus the searchbox when we're already running and we're moved
@@ -1676,7 +1676,7 @@ VOID NTAPI MainWindowShowingCallback(
     PhRegisterMessageLoopFilter(MessageLoopFilter, NULL);
 
     PhRegisterCallback(
-        SystemInformer_GetCallbackLayoutPadding(),
+        ImageManager_GetCallbackLayoutPadding(),
         LayoutPaddingCallback,
         NULL,
         &LayoutPaddingCallbackRegistration
@@ -1751,7 +1751,7 @@ VOID UpdateCachedSettings(
 
     if (ToolbarInitialized)
     {
-        SystemInformer_Invoke(UpdateDpiMetrics, NULL);
+        ImageManager_Invoke(UpdateDpiMetrics, NULL);
     }
 }
 
@@ -1776,8 +1776,8 @@ VOID NTAPI LoadCallback(
 
     PluginInterfaceInitialize();
 
-    MainWindowHookProc = SystemInformer_GetWindowProcedure();
-    SystemInformer_SetWindowProcedure(MainWindowCallbackProc);
+    MainWindowHookProc = ImageManager_GetWindowProcedure();
+    ImageManager_SetWindowProcedure(MainWindowCallbackProc);
 
     UpdateCachedSettings();
 

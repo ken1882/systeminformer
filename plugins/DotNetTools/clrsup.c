@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2022 Winsider Seminars & Solutions, Inc.  All rights reserved.
  *
- * This file is part of System Informer.
+ * This file is part of Image Manager.
  *
  * Authors:
  *
@@ -2506,7 +2506,7 @@ HRESULT STDMETHODCALLTYPE DnCLRDataTarget_GetThreadContext(
     {
         if (!isCurrentThread && canSuspend)
         {
-            if (SystemInformer_GetWindowsVersion() >= WINDOWS_11)
+            if (ImageManager_GetWindowsVersion() >= WINDOWS_11)
             {
                 if (NT_SUCCESS(PhFreezeThread(&stateChangeHandle, threadHandle)))
                 {

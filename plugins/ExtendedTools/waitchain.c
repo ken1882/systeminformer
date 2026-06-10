@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2022 Winsider Seminars & Solutions, Inc.  All rights reserved.
  *
- * This file is part of System Informer.
+ * This file is part of Image Manager.
  *
  * Authors:
  *
@@ -494,9 +494,9 @@ INT_PTR CALLBACK WaitChainDlgProc(
                     {
                         if (processNode = PhFindProcessNode(UlongToHandle(selectedNode->ProcessId)))
                         {
-                            SystemInformer_SelectTabPage(0);
-                            SystemInformer_SelectProcessNode(processNode);
-                            SystemInformer_ToggleVisible(FALSE);
+                            ImageManager_SelectTabPage(0);
+                            ImageManager_SelectProcessNode(processNode);
+                            ImageManager_ToggleVisible(FALSE);
                         }
                     }
                 }

@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2022 Winsider Seminars & Solutions, Inc.  All rights reserved.
  *
- * This file is part of System Informer.
+ * This file is part of Image Manager.
  *
  * Authors:
  *
@@ -568,7 +568,7 @@ INT_PTR CALLBACK CustomizeToolbarDialogProc(
             ListBox_SetItemHeight(context->CurrentListHandle, 0, context->CXWidth + 6); // BitmapHeight
 
             {
-                LONG dpi = SystemInformer_GetWindowDpi();
+                LONG dpi = ImageManager_GetWindowDpi();
                 ToolBarImageSize.cx = PhGetSystemMetrics(SM_CXSMICON, dpi);
                 ToolBarImageSize.cy = PhGetSystemMetrics(SM_CYSMICON, dpi);
             }

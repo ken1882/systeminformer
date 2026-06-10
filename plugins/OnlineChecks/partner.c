@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2022 Winsider Seminars & Solutions, Inc.  All rights reserved.
  *
- * This file is part of System Informer.
+ * This file is part of Image Manager.
  *
  * Authors:
  *
@@ -119,7 +119,7 @@ static INT_PTR CALLBACK PartnerDialogProc(
 
             context->BannerBitmap = PartnerLoadImage(MAKEINTRESOURCE(IDB_PARTNERBANNER), width, height);
 
-            context->TitleFont = PhCreateCommonFont(12, FW_SEMIBOLD, GetDlgItem(WindowHandle, IDC_PARTNER_TITLE), SystemInformer_GetWindowDpi());
+            context->TitleFont = PhCreateCommonFont(12, FW_SEMIBOLD, GetDlgItem(WindowHandle, IDC_PARTNER_TITLE), ImageManager_GetWindowDpi());
             if (context->TitleFont)
                 SetWindowFont(GetDlgItem(WindowHandle, IDC_PARTNER_TITLE), context->TitleFont, TRUE);
 
@@ -202,17 +202,17 @@ static VOID OnlineChecksShowPartnerOptions(
     )
 {
     OnlineChecksPreEnableUi = TRUE;
-    SystemInformer_ShowOptions(L"OnlineChecks");
+    ImageManager_ShowOptions(L"OnlineChecks");
 }
 
 static VOID OnlineChecksRestartForPartner(
     _In_ PVOID InvokeContext
     )
 {
-    SystemInformer_PrepareForEarlyShutdown();
+    ImageManager_PrepareForEarlyShutdown();
 
     if (NT_SUCCESS(PhShellProcessHacker(
-        SystemInformer_GetWindowHandle(),
+        ImageManager_GetWindowHandle(),
         L"-v -newinstance",
         SW_SHOW,
         PH_SHELL_EXECUTE_DEFAULT,
@@ -221,11 +221,11 @@ static VOID OnlineChecksRestartForPartner(
         NULL
         )))
     {
-        SystemInformer_Destroy();
+        ImageManager_Destroy();
     }
     else
     {
-        SystemInformer_CancelEarlyShutdown();
+        ImageManager_CancelEarlyShutdown();
     }
 }
 
@@ -243,7 +243,7 @@ VOID NTAPI MainWindowShowingCallback(
     //result = PhDialogBox(
     //    PluginInstance->DllBase,
     //    MAKEINTRESOURCE(IDD_PARTNER),
-    //    SystemInformer_GetWindowHandle(),
+    //    ImageManager_GetWindowHandle(),
     //    PartnerDialogProc,
     //    NULL
     //    );
@@ -252,13 +252,13 @@ VOID NTAPI MainWindowShowingCallback(
 
     //if (result == IDC_PARTNER_CONFIGURE)
     //{
-    //    SystemInformer_Invoke(OnlineChecksShowPartnerOptions, NULL);
+    //    ImageManager_Invoke(OnlineChecksShowPartnerOptions, NULL);
     //}
     //else
     //{
     //    PhSetIntegerSetting(SETTING_NAME_SCAN_ENABLED, TRUE);
     //    PhSetIntegerSetting(SETTING_NAME_HYBRIDANALYSIS_LOOKUPS_ENABLED, TRUE);
     //    PhSetIntegerSetting(SETTING_NAME_HYBRIDANALYSIS_SUBMIT_ENABLED, TRUE);
-    //    SystemInformer_Invoke(OnlineChecksRestartForPartner, NULL);
+    //    ImageManager_Invoke(OnlineChecksRestartForPartner, NULL);
     //}
 }

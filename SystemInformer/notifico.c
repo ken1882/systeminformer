@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2022 Winsider Seminars & Solutions, Inc.  All rights reserved.
  *
- * This file is part of System Informer.
+ * This file is part of Image Manager.
  *
  * Authors:
  *
@@ -367,7 +367,7 @@ VOID PhNfLoadStage2(
     PhNfRegisterIcon(NULL, PH_TRAY_ICON_ID_IO_TEXT, PhNfpTrayIconItemGuids[PH_TRAY_ICON_GUID_IO_TEXT], NULL, L"IO usage (text)", 0, PhNfpIoUsageTextIconUpdateCallback, NULL);
     PhNfRegisterIcon(NULL, PH_TRAY_ICON_ID_COMMIT_TEXT, PhNfpTrayIconItemGuids[PH_TRAY_ICON_GUID_COMMIT_TEXT], NULL, L"Commit usage (text)", 0, PhNfpCommitTextIconUpdateCallback, NULL);
     PhNfRegisterIcon(NULL, PH_TRAY_ICON_ID_PHYSICAL_TEXT, PhNfpTrayIconItemGuids[PH_TRAY_ICON_GUID_PHYSICAL_TEXT], NULL, L"Physical usage (text)", 0, PhNfpPhysicalUsageTextIconUpdateCallback, NULL);
-    PhNfRegisterIcon(NULL, PH_TRAY_ICON_ID_PLAIN_ICON, PhNfpTrayIconItemGuids[PH_TRAY_ICON_GUID_PLAIN_ICON], NULL, L"System Informer icon (static)", 0, PhNfpPlainIconUpdateCallback, NULL);
+    PhNfRegisterIcon(NULL, PH_TRAY_ICON_ID_PLAIN_ICON, PhNfpTrayIconItemGuids[PH_TRAY_ICON_GUID_PLAIN_ICON], NULL, L"Image Manager icon (static)", 0, PhNfpPlainIconUpdateCallback, NULL);
 
     if (PhPluginsEnabled)
     {
@@ -477,7 +477,7 @@ VOID PhNfForwardMessage(
         {
             if (PhGetIntegerSetting(SETTING_ICON_SINGLE_CLICK))
             {
-                SystemInformer_IconClick();
+                ImageManager_IconClick();
                 PhNfpDisableHover();
             }
             else
@@ -529,7 +529,7 @@ VOID PhNfForwardMessage(
                     PhNfpDisableHover();
                 }
 
-                SystemInformer_IconClick();
+                ImageManager_IconClick();
             }
         }
         break;
@@ -552,7 +552,7 @@ VOID PhNfForwardMessage(
         {
             // HACK: explorer seems to send two NIN_KEYSELECT messages when the user selects the icon and presses ENTER.
             if (GetForegroundWindow() != WindowHandle)
-                SystemInformer_IconClick();
+                ImageManager_IconClick();
         }
         break;
     case NIN_BALLOONUSERCLICK:
@@ -2491,7 +2491,7 @@ VOID PhNfpPlainIconUpdateCallback(
 
     if (!string)
     {
-        PH_STRINGREF text = PH_STRINGREF_INIT(L"System Informer");
+        PH_STRINGREF text = PH_STRINGREF_INIT(L"Image Manager");
         string = PhCreateString2(&text);
     }
 

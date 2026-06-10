@@ -69,12 +69,12 @@ BEGIN
         BLOCK "040904B0"
         BEGIN
             VALUE "CompanyName", "Winsider Seminars & Solutions, Inc."
-            VALUE "FileDescription", "System Informer"
+            VALUE "FileDescription", "Image Manager"
             VALUE "FileVersion", PHAPP_VERSION_STRING
-            VALUE "InternalName", "System Informer"
+            VALUE "InternalName", "Image Manager"
             VALUE "LegalCopyright", "Copyright (c) Winsider Seminars & Solutions, Inc.  All rights reserved."
             VALUE "OriginalFilename", "ExtendedTools.dll"
-            VALUE "ProductName", "System Informer"
+            VALUE "ProductName", "Image Manager"
             VALUE "ProductVersion", PHAPP_VERSION_STRING
             VALUE "Comments", PHAPP_VERSION_COMMIT
         END

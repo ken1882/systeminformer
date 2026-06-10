@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2022 Winsider Seminars & Solutions, Inc.  All rights reserved.
  *
- * This file is part of System Informer.
+ * This file is part of Image Manager.
  *
  * Authors:
  *
@@ -34,7 +34,7 @@ VOID AddOrRemoveCollapseServicesOnStart(
     )
 {
     // This is for backwards compat with PhCsCollapseServicesOnStart (dmex)
-    // https://github.com/winsiderss/systeminformer/issues/519
+    // https://github.com/winsiderss/imagemanager/issues/519
 
     if (CollapseServicesOnStart)
     {

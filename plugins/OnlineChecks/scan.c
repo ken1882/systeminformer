@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2022 Winsider Seminars & Solutions, Inc.  All rights reserved.
  *
- * This file is part of System Informer.
+ * This file is part of Image Manager.
  *
  * Authors:
  *
@@ -2222,7 +2222,7 @@ BOOLEAN InitializeScanning(
     ScanSubmittingString = PhCreateString(L"Submitting...");
 
     result = FALSE;
-    if (!!SystemInformer_IsPortableMode())
+    if (!!ImageManager_IsPortableMode())
         fileName = PhGetApplicationDirectoryFileName(&databaseFileName, FALSE);
     else
         fileName = PhGetRoamingAppDataDirectory(&databaseFileName, FALSE);

@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2022 Winsider Seminars & Solutions, Inc.  All rights reserved.
  *
- * This file is part of System Informer.
+ * This file is part of Image Manager.
  *
  * Authors:
  *
@@ -270,7 +270,7 @@ INT_PTR CALLBACK PhpLogDlgProc(
                     fileDialog = PhCreateSaveFileDialog();
 
                     PhSetFileDialogFilter(fileDialog, filters, sizeof(filters) / sizeof(PH_FILETYPE_FILTER));
-                    PhSetFileDialogFileName(fileDialog, L"System Informer Log.txt");
+                    PhSetFileDialogFileName(fileDialog, L"Image Manager Log.txt");
 
                     if (PhShowFileDialog(hwndDlg, fileDialog))
                     {

@@ -99,12 +99,12 @@ END
 
 IDD_PARTNER DIALOGEX 0, 0, 320, 205
 STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
-CAPTION "System Informer"
+CAPTION "Image Manager"
 FONT 8, "MS Shell Dlg", 400, 0, 0x1
 BEGIN
     CONTROL         "",IDC_PARTNER_BANNER,"Static",SS_OWNERDRAW,70,10,180,50
     LTEXT           "File reputation analysis",IDC_PARTNER_TITLE,7,66,306,12,SS_CENTER
-    LTEXT           "System Informer has partnered with Hybrid-Analysis to provide automatic reputation analysis for processes, loaded modules, and services.",IDC_STATIC,30,84,260,20
+    LTEXT           "Image Manager has partnered with Hybrid-Analysis to provide automatic reputation analysis for processes, loaded modules, and services.",IDC_STATIC,30,84,260,20
     GROUPBOX        "What is shared with Hybrid-Analysis",IDC_STATIC,30,110,260,42
     LTEXT           "•  SHA-256 hashes of scanned images, for reputation lookup",IDC_STATIC,38,124,244,9
     LTEXT           "•  Files unknown to Hybrid-Analysis are uploaded for full analysis",IDC_STATIC,38,138,244,9

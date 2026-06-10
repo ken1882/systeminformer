@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2022 Winsider Seminars & Solutions, Inc.  All rights reserved.
  *
- * This file is part of System Informer.
+ * This file is part of Image Manager.
  *
  * Authors:
  *
@@ -319,11 +319,11 @@ LRESULT CALLBACK PhpPropSheetWndProc(
                 switch (dialog->wParam)
                 {
                 case VK_F5:
-                    SystemInformer_Refresh();
+                    ImageManager_Refresh();
                     break;
                 case VK_F6:
                 case VK_PAUSE:
-                    SystemInformer_SetUpdateAutomatically(!SystemInformer_GetUpdateAutomatically());
+                    ImageManager_SetUpdateAutomatically(!ImageManager_GetUpdateAutomatically());
                     break;
                 }
             }

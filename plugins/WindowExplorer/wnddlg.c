@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2022 Winsider Seminars & Solutions, Inc.  All rights reserved.
  *
- * This file is part of System Informer.
+ * This file is part of Image Manager.
  *
  * Authors:
  *
@@ -746,7 +746,7 @@ VOID NTAPI WepWindowNotifyEventChangeCallback(
     case WM_DPICHANGED:
         {
             if (Context->TreeWindowFont) DeleteFont(Context->TreeWindowFont);
-            Context->TreeWindowFont = PhDuplicateFont(SystemInformer_GetFont());
+            Context->TreeWindowFont = PhDuplicateFont(ImageManager_GetFont());
 
             SetWindowFont(Context->TreeNewHandle, Context->TreeWindowFont, TRUE);
         }
@@ -819,7 +819,7 @@ INT_PTR CALLBACK WepWindowsDlgProc(
             context->TreeNewHandle = GetDlgItem(hwndDlg, IDC_LIST);
             context->SearchBoxHandle = GetDlgItem(hwndDlg, IDC_SEARCHEDIT);
             context->FindWindowButtonHandle = GetDlgItem(hwndDlg, IDC_FINDWINDOW);
-            context->TreeWindowFont = PhDuplicateFont(SystemInformer_GetFont());
+            context->TreeWindowFont = PhDuplicateFont(ImageManager_GetFont());
 
             PhRegisterCallback(
                 PhGetGeneralCallback(GeneralCallbackWindowNotifyEvent),
@@ -1247,7 +1247,7 @@ INT_PTR CALLBACK WepWindowsDlgProc(
                         {
                             if (processNode = PhFindProcessNode(processItem->ProcessId))
                             {
-                                SystemInformer_SelectTabPage(0);
+                                ImageManager_SelectTabPage(0);
                                 PhSelectAndEnsureVisibleProcessNode(processNode);
                             }
 

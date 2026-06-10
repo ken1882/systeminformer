@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2022 Winsider Seminars & Solutions, Inc.  All rights reserved.
  *
- * This file is part of System Informer.
+ * This file is part of Image Manager.
  *
  * Authors:
  *
@@ -1628,9 +1628,9 @@ INT_PTR CALLBACK PhFindObjectsDlgProc(
 
                         if (processNode = PhFindProcessNode(handleObjectNode->ProcessId))
                         {
-                            SystemInformer_SelectTabPage(0);
-                            SystemInformer_SelectProcessNode(processNode);
-                            SystemInformer_ToggleVisible(TRUE);
+                            ImageManager_SelectTabPage(0);
+                            ImageManager_SelectProcessNode(processNode);
+                            ImageManager_ToggleVisible(TRUE);
                         }
                         else
                         {

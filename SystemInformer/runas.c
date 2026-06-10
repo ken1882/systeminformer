@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2022 Winsider Seminars & Solutions, Inc.  All rights reserved.
  *
- * This file is part of System Informer.
+ * This file is part of Image Manager.
  *
  * Authors:
  *
@@ -2220,7 +2220,7 @@ NTSTATUS PhExecuteRunAsCommand(
  * \param DesktopName The window station and desktop to run the program under.
  * \param UseLinkedToken Uses the linked token if possible.
  * \retval STATUS_CANCELLED The user cancelled the operation.
- * \remarks This function will cause another instance of System Informer to be executed if the current security context
+ * \remarks This function will cause another instance of Image Manager to be executed if the current security context
  * does not have sufficient system access. This is done through a UAC elevation prompt.
  */
 NTSTATUS PhExecuteRunAsCommand2(

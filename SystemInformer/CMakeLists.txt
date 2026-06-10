@@ -1,7 +1,7 @@
 #
 # Copyright (c) 2022 Winsider Seminars & Solutions, Inc.  All rights reserved.
 #
-# This file is part of System Informer.
+# This file is part of Image Manager.
 #
 
 set(HEADERS
@@ -77,7 +77,7 @@ set(RESOURCES
     "resources/search_modern_light.svg"
     "resources/search_stop_modern_dark.svg"
     "resources/search_stop_modern_light.svg"
-    "resources/systeminformer.png"
+    "resources/imagemanager.png"
     "SystemInformer.ico"
 )
 source_group("Resource Files" FILES ${RESOURCES})

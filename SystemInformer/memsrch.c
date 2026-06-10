@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2022 Winsider Seminars & Solutions, Inc.  All rights reserved.
  *
- * This file is part of System Informer.
+ * This file is part of Image Manager.
  *
  * Authors:
  *
@@ -674,7 +674,7 @@ VOID PhShowMemoryStringDialog(
         showMemoryResults->Results = context.Results;
 
         PhReferenceObject(context.Results);
-        SystemInformer_ShowMemoryResults(showMemoryResults);
+        ImageManager_ShowMemoryResults(showMemoryResults);
     }
     else
     {

@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2022 Winsider Seminars & Solutions, Inc.  All rights reserved.
  *
- * This file is part of System Informer.
+ * This file is part of Image Manager.
  *
  * Authors:
  *
@@ -419,7 +419,7 @@ INT_PTR CALLBACK PhOptionsDialogProc(
                 PhOptionsDestroySection(section);
             }
 
-            SystemInformer_Invoke(PhpOptionsNotifyChangeCallback, NULL);
+            ImageManager_Invoke(PhpOptionsNotifyChangeCallback, NULL);
 
             PhDereferenceObject(SectionList);
             SectionList = NULL;
@@ -463,11 +463,11 @@ INT_PTR CALLBACK PhOptionsDialogProc(
                         hwndDlg,
                         TD_YES_BUTTON | TD_NO_BUTTON,
                         TD_WARNING_ICON,
-                        L"Do you want to reset all settings and restart System Informer?",
+                        L"Do you want to reset all settings and restart Image Manager?",
                         L""
                         ) == IDYES)
                     {
-                        SystemInformer_PrepareForEarlyShutdown();
+                        ImageManager_PrepareForEarlyShutdown();
 
                         PhResetSettings(PhMainWndHandle);
                         PhSaveSettings2(PhSettingsFileName);
@@ -482,11 +482,11 @@ INT_PTR CALLBACK PhOptionsDialogProc(
                             NULL
                             )))
                         {
-                            SystemInformer_Destroy();
+                            ImageManager_Destroy();
                         }
                         else
                         {
-                            SystemInformer_CancelEarlyShutdown();
+                            ImageManager_CancelEarlyShutdown();
                         }
                     }
                 }
@@ -931,7 +931,7 @@ static VOID WriteCurrentUserRun(
         0
         )))
     {
-        static CONST PH_STRINGREF valueName = PH_STRINGREF_INIT(L"System Informer");
+        static CONST PH_STRINGREF valueName = PH_STRINGREF_INIT(L"Image Manager");
         static CONST PH_STRINGREF separator = PH_STRINGREF_INIT(L"\"");
 
         if (Present)
@@ -1041,7 +1041,7 @@ VOID PhpSetDefaultTaskManager(
     }
     else
     {
-        message = L"Do you want to make System Informer the default Windows Task Manager?";
+        message = L"Do you want to make Image Manager the default Windows Task Manager?";
 
         // Warn the user when we're not installed into secure location. (dmex)
         if (!PhShowOptionsDefaultInstallLocation(ParentWindowHandle, L"Changing the default Task Manager"))
@@ -1433,12 +1433,12 @@ VOID PhpRefreshTaskManagerState(
 
     if (PhpIsDefaultTaskManager())
     {
-        PhSetWindowText(GetDlgItem(WindowHandle, IDC_DEFSTATE), L"System Informer is the default Task Manager:");
+        PhSetWindowText(GetDlgItem(WindowHandle, IDC_DEFSTATE), L"Image Manager is the default Task Manager:");
         PhSetWindowText(GetDlgItem(WindowHandle, IDC_REPLACETASKMANAGER), L"Restore default...");
     }
     else
     {
-        PhSetWindowText(GetDlgItem(WindowHandle, IDC_DEFSTATE), L"System Informer is not the default Task Manager:");
+        PhSetWindowText(GetDlgItem(WindowHandle, IDC_DEFSTATE), L"Image Manager is not the default Task Manager:");
         PhSetWindowText(GetDlgItem(WindowHandle, IDC_REPLACETASKMANAGER), L"Make default...");
     }
 }
@@ -1577,7 +1577,7 @@ static VOID PhpOptionsNotifyChangeCallback(
     )
 {
     PhUpdateCachedSettings();
-    SystemInformer_SaveAllSettings();
+    ImageManager_SaveAllSettings();
     PhInvalidateAllProcessNodes();
     PhReloadSettingsProcessTreeList();
     PhSiNotifyChangeSettings();
@@ -1592,11 +1592,11 @@ static VOID PhpOptionsNotifyChangeCallback(
             PhMainWndHandle,
             TD_YES_BUTTON | TD_NO_BUTTON,
             TD_INFORMATION_ICON,
-            L"One or more options you have changed requires a restart of System Informer.",
-            L"Do you want to restart System Informer now?"
+            L"One or more options you have changed requires a restart of Image Manager.",
+            L"Do you want to restart Image Manager now?"
             ) == IDYES)
         {
-            SystemInformer_PrepareForEarlyShutdown();
+            ImageManager_PrepareForEarlyShutdown();
 
             if (NT_SUCCESS(PhShellProcessHacker(
                 PhMainWndHandle,
@@ -1608,11 +1608,11 @@ static VOID PhpOptionsNotifyChangeCallback(
                 NULL
                 )))
             {
-                SystemInformer_Destroy();
+                ImageManager_Destroy();
             }
             else
             {
-                SystemInformer_CancelEarlyShutdown();
+                ImageManager_CancelEarlyShutdown();
             }
         }
     }
@@ -1626,11 +1626,11 @@ VOID PhShowOptionsRestartRequired(
         PhMainWndHandle,
         TD_YES_BUTTON | TD_NO_BUTTON,
         TD_INFORMATION_ICON,
-        L"One or more options you have changed requires a restart of System Informer.",
-        L"Do you want to restart System Informer now?"
+        L"One or more options you have changed requires a restart of Image Manager.",
+        L"Do you want to restart Image Manager now?"
         ) == IDYES)
     {
-        SystemInformer_PrepareForEarlyShutdown();
+        ImageManager_PrepareForEarlyShutdown();
 
         if (NT_SUCCESS(PhShellProcessHacker(
             WindowHandle,
@@ -1642,11 +1642,11 @@ VOID PhShowOptionsRestartRequired(
             NULL
             )))
         {
-            SystemInformer_Destroy();
+            ImageManager_Destroy();
         }
         else
         {
-            SystemInformer_CancelEarlyShutdown();
+            ImageManager_CancelEarlyShutdown();
         }
     }
 }
@@ -1674,8 +1674,8 @@ BOOLEAN PhShowOptionsDefaultInstallLocation(
                         ParentWindowHandle,
                         TD_YES_BUTTON | TD_NO_BUTTON,
                         TD_WARNING_ICON,
-                        L"WARNING: You have not installed System Informer into a secure location.",
-                        L"%s is not recommended when running System Informer from outside a secure location (e.g. Program Files).\r\n\r\nAre you sure you want to continue?",
+                        L"WARNING: You have not installed Image Manager into a secure location.",
+                        L"%s is not recommended when running Image Manager from outside a secure location (e.g. Program Files).\r\n\r\nAre you sure you want to continue?",
                         Message
                         ) == IDNO)
                     {
@@ -1928,7 +1928,7 @@ INT_PTR CALLBACK PhpOptionsGeneralDlgProc(
 
             if (NewFontSelection || NewFontMonospaceSelection)
             {
-                SystemInformer_UpdateFont();
+                ImageManager_UpdateFont();
             }
 
             if (CurrentFontInstance)
@@ -1983,7 +1983,7 @@ INT_PTR CALLBACK PhpOptionsGeneralDlgProc(
                         // Can't get LOGFONT from the existing setting, probably
                         // because the user hasn't ever chosen a font before.
                         // Set the font to something familiar.
-                        GetObject(SystemInformer_GetFont(), sizeof(LOGFONT), &font);
+                        GetObject(ImageManager_GetFont(), sizeof(LOGFONT), &font);
                     }
 
                     memset(&chooseFont, 0, sizeof(CHOOSEFONT));
@@ -2027,7 +2027,7 @@ INT_PTR CALLBACK PhpOptionsGeneralDlgProc(
                         // Can't get LOGFONT from the existing setting, probably
                         // because the user hasn't ever chosen a font before.
                         // Set the font to something familiar.
-                        //GetObject(SystemInformer_GetFont(), sizeof(LOGFONT), &font);
+                        //GetObject(ImageManager_GetFont(), sizeof(LOGFONT), &font);
                         GetObject(PhMonospaceFont, sizeof(LOGFONT), &font);
                     }
 
@@ -3426,7 +3426,7 @@ typedef enum _PH_OPTIONS_HIGHLIGHTING_GROUP
 
 static COLOR_ITEM ColorItems[] =
 {
-    COLOR_ITEM(SETTING_COLOR_OWN_PROCESSES, PH_OPTIONS_HIGHLIGHTING_GROUP_PROCESSES_AND_THREADS, L"Own processes", L"Processes running under the same user account as System Informer."),
+    COLOR_ITEM(SETTING_COLOR_OWN_PROCESSES, PH_OPTIONS_HIGHLIGHTING_GROUP_PROCESSES_AND_THREADS, L"Own processes", L"Processes running under the same user account as Image Manager."),
     COLOR_ITEM(SETTING_COLOR_SYSTEM_PROCESSES, PH_OPTIONS_HIGHLIGHTING_GROUP_PROCESSES_AND_THREADS, L"System processes", L"Processes running under the NT AUTHORITY\\SYSTEM user account."),
     COLOR_ITEM(SETTING_COLOR_SERVICE_PROCESSES, PH_OPTIONS_HIGHLIGHTING_GROUP_PROCESSES_AND_THREADS, L"Service processes", L"Processes which host one or more services."),
     COLOR_ITEM(SETTING_COLOR_BACKGROUND_PROCESSES, PH_OPTIONS_HIGHLIGHTING_GROUP_PROCESSES_AND_THREADS, L"Background processes", L"Processes with a background scheduling priority."),

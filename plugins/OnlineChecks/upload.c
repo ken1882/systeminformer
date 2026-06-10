@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2022 Winsider Seminars & Solutions, Inc.  All rights reserved.
  *
- * This file is part of System Informer.
+ * This file is part of Image Manager.
  *
  * Authors:
  *
@@ -1776,7 +1776,7 @@ HRESULT CALLBACK OnlineChecksTaskDialogBootstrap(
     {
     case TDN_CREATED:
         {
-            HWND windowHandle = SystemInformer_GetWindowHandle();
+            HWND windowHandle = ImageManager_GetWindowHandle();
 
             context->DialogHandle = WindowHandle;
             OnlineChecksUpdateWindowDpi(context);

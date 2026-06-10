@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2022 Winsider Seminars & Solutions, Inc.  All rights reserved.
  *
- * This file is part of System Informer.
+ * This file is part of Image Manager.
  *
  * Authors:
  *
@@ -68,7 +68,7 @@ VOID AddRemoveDeviceChangeCallback(
     )
 {
     // We get called during the plugin LoadCallback, don't do anything.
-    if (!SystemInformer_GetWindowHandle())
+    if (!ImageManager_GetWindowHandle())
         return;
 
     // Add the subclass only when disks are being monitored, remove when no longer needed.

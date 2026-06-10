@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2022 Winsider Seminars & Solutions, Inc.  All rights reserved.
  *
- * This file is part of System Informer.
+ * This file is part of Image Manager.
  *
  * Authors:
  *
@@ -716,7 +716,7 @@ INT_PTR CALLBACK PhpProcessGeneralDlgProc(
 
                     if (parentProcessItem = PhReferenceProcessItem(processItem->ParentProcessId))
                     {
-                        SystemInformer_ShowProcessProperties(parentProcessItem);
+                        ImageManager_ShowProcessProperties(parentProcessItem);
                         PhDereferenceObject(parentProcessItem);
                     }
                     else

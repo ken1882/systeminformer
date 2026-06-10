@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2022 Winsider Seminars & Solutions, Inc.  All rights reserved.
  *
- * This file is part of System Informer.
+ * This file is part of Image Manager.
  *
  * Authors:
  *
@@ -1526,7 +1526,7 @@ VOID PhWritePhTextHeader(
     SYSTEMTIME systemTime;
     PPH_STRING timeString;
 
-    PhWriteStringAsUtf8FileStream2(FileStream, L"System Informer ");
+    PhWriteStringAsUtf8FileStream2(FileStream, L"Image Manager ");
 
     if (version = PhGetBuildVersion())
     {
@@ -2796,7 +2796,7 @@ HICON PhGetApplicationIcon(
     else
         iconFlags = PH_LOAD_ICON_SHARED | PH_LOAD_ICON_SIZE_LARGE;
 
-    return PhLoadIcon(NtCurrentImageBase(), MAKEINTRESOURCE(IDI_SYSTEMINFORMER), iconFlags, 0, 0, WindowDpi);
+    return PhLoadIcon(NtCurrentImageBase(), MAKEINTRESOURCE(IDI_IMAGEMANAGER), iconFlags, 0, 0, WindowDpi);
 }
 
 VOID PhSetWindowIcon(

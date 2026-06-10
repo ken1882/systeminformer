@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2022 Winsider Seminars & Solutions, Inc.  All rights reserved.
  *
- * This file is part of System Informer.
+ * This file is part of Image Manager.
  *
  * Authors:
  *
@@ -24,7 +24,7 @@
  * has been removed from the client ID table (PspCidTable). However, the method
  * does not detect native executables since CSR is not notified about them.
  * Some rootkits hook NtQuerySystemInformation in order to modify the returned
- * handle information; System Informer bypasses this by using KSystemInformer,
+ * handle information; Image Manager bypasses this by using KSystemInformer,
  * which calls ExEnumHandleTable directly. Note that both process and thread
  * handles are examined.
  */
@@ -453,7 +453,7 @@ INT_PTR CALLBACK PhpZombieProcessesDlgProc(
 
                             if (NT_SUCCESS(status))
                             {
-                                SystemInformer_ShowProcessProperties(processItem);
+                                ImageManager_ShowProcessProperties(processItem);
                                 PhDereferenceObject(processItem);
                             }
                             else

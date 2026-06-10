@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2022 Winsider Seminars & Solutions, Inc.  All rights reserved.
  *
- * This file is part of System Informer.
+ * This file is part of Image Manager.
  *
  * Authors:
  *
@@ -20,7 +20,7 @@ VOID PhAddDefaultSettings(
     VOID
     )
 {
-    PhpAddStringSetting(SETTING_SCHEMA_FILE, L"https://systeminformer.io/settings.schema.json");
+    PhpAddStringSetting(SETTING_SCHEMA_FILE, L"https://imagemanager.io/settings.schema.json");
     PhpAddIntegerSetting(SETTING_ALLOW_ONLY_ONE_INSTANCE, L"1");
     PhpAddIntegerSetting(SETTING_CLOSE_ON_ESCAPE, L"0");
     PhpAddStringSetting(SETTING_DBGHELP_SEARCH_PATH, L"SRV*C:\\Symbols*https://msdl.microsoft.com/download/symbols");

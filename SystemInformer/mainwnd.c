@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2022 Winsider Seminars & Solutions, Inc.  All rights reserved.
  *
- * This file is part of System Informer.
+ * This file is part of Image Manager.
  *
  * Authors:
  *
@@ -1168,7 +1168,7 @@ VOID PhMwpOnCommand(
             }
             else if (PhGetIntegerSetting(SETTING_CLOSE_ON_ESCAPE))
             {
-                SystemInformer_Destroy();
+                ImageManager_Destroy();
             }
         }
         break;
@@ -1189,7 +1189,7 @@ VOID PhMwpOnCommand(
         break;
     case ID_HACKER_SHOWDETAILSFORALLPROCESSES:
         {
-            SystemInformer_PrepareForEarlyShutdown();
+            ImageManager_PrepareForEarlyShutdown();
 
             if (NT_SUCCESS(PhShellProcessHacker(
                 WindowHandle,
@@ -1201,11 +1201,11 @@ VOID PhMwpOnCommand(
                 NULL
                 )))
             {
-                SystemInformer_Destroy();
+                ImageManager_Destroy();
             }
             else
             {
-                SystemInformer_CancelEarlyShutdown();
+                ImageManager_CancelEarlyShutdown();
             }
         }
         break;
@@ -1220,7 +1220,7 @@ VOID PhMwpOnCommand(
             PVOID fileDialog = PhCreateSaveFileDialog();
             PH_FORMAT format[3];
 
-            PhInitFormatS(&format[0], L"System Informer ");
+            PhInitFormatS(&format[0], L"Image Manager ");
             PhInitFormatSR(&format[1], CurrentPage->Name);
             PhInitFormatS(&format[2], L".txt");
 
@@ -1305,7 +1305,7 @@ VOID PhMwpOnCommand(
         PhMwpExecuteComputerCommand(WindowHandle, Id);
         break;
     case ID_HACKER_EXIT:
-        SystemInformer_Destroy();
+        ImageManager_Destroy();
         break;
     case ID_VIEW_SYSTEMINFORMATION:
         PhShowSystemInformationDialog(NULL);
@@ -1966,7 +1966,7 @@ VOID PhMwpOnCommand(
                 // Note: The current process is a special case (dmex)
                 if (processItem->ProcessId == NtCurrentProcessId())
                 {
-                    SystemInformer_PrepareForEarlyShutdown();
+                    ImageManager_PrepareForEarlyShutdown();
 
                     if (NT_SUCCESS(PhShellProcessHacker(
                         WindowHandle,
@@ -1978,11 +1978,11 @@ VOID PhMwpOnCommand(
                         NULL
                         )))
                     {
-                        SystemInformer_Destroy();
+                        ImageManager_Destroy();
                     }
                     else
                     {
-                        SystemInformer_CancelEarlyShutdown();
+                        ImageManager_CancelEarlyShutdown();
                     }
                 }
                 else
@@ -2622,7 +2622,7 @@ VOID PhMwpOnCommand(
                 {
                     PhMwpSelectPage(PhMwpServicesPage->Index);
                     SetFocus(PhMwpServiceTreeNewHandle);
-                    SystemInformer_SelectServiceItem(serviceItem);
+                    ImageManager_SelectServiceItem(serviceItem);
 
                     PhDereferenceObject(serviceItem);
                 }
@@ -4268,7 +4268,7 @@ PPH_EMENU PhpCreateIconMenu(
     PPH_EMENU menu;
 
     menu = PhCreateEMenu();
-    PhInsertEMenuItem(menu, PhCreateEMenuItem(0, ID_ICON_SHOWHIDEPROCESSHACKER, L"&Show/Hide System Informer", NULL, NULL), ULONG_MAX);
+    PhInsertEMenuItem(menu, PhCreateEMenuItem(0, ID_ICON_SHOWHIDEPROCESSHACKER, L"&Show/Hide Image Manager", NULL, NULL), ULONG_MAX);
     PhInsertEMenuItem(menu, PhCreateEMenuItem(0, ID_ICON_SYSTEMINFORMATION, L"System &information", NULL, NULL), ULONG_MAX);
     PhInsertEMenuItem(menu, PhpCreateNotificationMenu(), ULONG_MAX);
     PhInsertEMenuItem(menu, PhpCreateNotificationSettingsMenu(), ULONG_MAX);
@@ -4857,7 +4857,7 @@ BOOLEAN PhHandleMiniProcessMenuItem(
                     PhUiRestartProcess(PhMainWndHandle, processItem);
                     break;
                 case ID_PROCESS_PROPERTIES:
-                    SystemInformer_ShowProcessProperties(processItem);
+                    ImageManager_ShowProcessProperties(processItem);
                     break;
                 }
 
@@ -5100,7 +5100,7 @@ VOID PhShowIconContextMenu(
             switch (item->Id)
             {
             case ID_ICON_SHOWHIDEPROCESSHACKER:
-                SystemInformer_ToggleVisible(FALSE);
+                ImageManager_ToggleVisible(FALSE);
                 break;
             case ID_ICON_SYSTEMINFORMATION:
                 SendMessage(WindowHandle, WM_COMMAND, ID_VIEW_SYSTEMINFORMATION, 0);
@@ -5168,9 +5168,9 @@ VOID PhShowDetailsForIconNotification(
 
             if (processNode = PhFindProcessNode(PhMwpLastNotificationDetails.ProcessId))
             {
-                SystemInformer_SelectTabPage(PhMwpProcessesPage->Index);
-                SystemInformer_SelectProcessNode(processNode);
-                SystemInformer_ToggleVisible(TRUE);
+                ImageManager_SelectTabPage(PhMwpProcessesPage->Index);
+                ImageManager_SelectProcessNode(processNode);
+                ImageManager_ToggleVisible(TRUE);
             }
             else
             {
@@ -5187,9 +5187,9 @@ VOID PhShowDetailsForIconNotification(
             if (PhMwpLastNotificationDetails.ServiceName &&
                 (serviceItem = PhReferenceServiceItem(&PhMwpLastNotificationDetails.ServiceName->sr)))
             {
-                SystemInformer_SelectTabPage(PhMwpServicesPage->Index);
-                SystemInformer_SelectServiceItem(serviceItem);
-                SystemInformer_ToggleVisible(TRUE);
+                ImageManager_SelectTabPage(PhMwpServicesPage->Index);
+                ImageManager_SelectServiceItem(serviceItem);
+                ImageManager_ToggleVisible(TRUE);
 
                 PhDereferenceObject(serviceItem);
             }

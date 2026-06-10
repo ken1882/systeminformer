@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2022 Winsider Seminars & Solutions, Inc.  All rights reserved.
  *
- * This file is part of System Informer.
+ * This file is part of Image Manager.
  *
  * Authors:
  *
@@ -417,7 +417,7 @@ VOID PhpProcessMemorySave(
     PPH_PROCESS_ITEM processItem;
 
     processItem = PhReferenceProcessItem(MemoryContext->ProcessId);
-    PhInitFormatS(&format[0], L"System Informer (");
+    PhInitFormatS(&format[0], L"Image Manager (");
     PhInitFormatS(&format[1], processItem ? PhGetStringOrDefault(processItem->ProcessName, L"Unknown process") : L"Unknown process");
     PhInitFormatS(&format[2], L") Memory");
     PhInitFormatS(&format[3], L".txt");
@@ -691,7 +691,7 @@ INT_PTR CALLBACK PhpProcessMemoryDlgProc(
                         showMemoryEditor->SelectOffset = ULONG_MAX;
                         showMemoryEditor->SelectLength = 0;
 
-                        SystemInformer_ShowMemoryEditor(showMemoryEditor);
+                        ImageManager_ShowMemoryEditor(showMemoryEditor);
                     }
                 }
                 break;
@@ -1064,7 +1064,7 @@ INT_PTR CALLBACK PhpProcessMemoryDlgProc(
                                         showMemoryEditor->SelectOffset = (ULONG)((ULONG_PTR)address - (ULONG_PTR)memoryItem->BaseAddress);
                                         showMemoryEditor->SelectLength = 0;
 
-                                        SystemInformer_ShowMemoryEditor(showMemoryEditor);
+                                        ImageManager_ShowMemoryEditor(showMemoryEditor);
                                         break;
                                     }
                                     else

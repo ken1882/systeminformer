@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2022 Winsider Seminars & Solutions, Inc.  All rights reserved.
  *
- * This file is part of System Informer.
+ * This file is part of Image Manager.
  *
  * Authors:
  *
@@ -54,7 +54,7 @@ BOOLEAN FwTreeNewCreated = FALSE;
 HWND FwTreeNewHandle = NULL;
 ULONG FwTreeNewSortColumn = FW_COLUMN_NAME;
 PH_SORT_ORDER FwTreeNewSortOrder = NoSortOrder;
-CONST PH_STRINGREF FwTreeEmptyText = PH_STRINGREF_INIT(L"Firewall monitoring requires System Informer to be restarted with administrative privileges.");
+CONST PH_STRINGREF FwTreeEmptyText = PH_STRINGREF_INIT(L"Firewall monitoring requires Image Manager to be restarted with administrative privileges.");
 CONST PH_STRINGREF FwTreePageText = PH_STRINGREF_INIT(L"Firewall");
 CONST PH_STRINGREF FwTreeBannerText = PH_STRINGREF_INIT(L"Search Firewall");
 PPH_STRING FwTreeErrorText = NULL;
@@ -2190,7 +2190,7 @@ VOID NTAPI FwItemsUpdatedHandler(
     _In_opt_ PVOID Context
     )
 {
-    SystemInformer_Invoke(OnFwItemsUpdated, UlongToPtr(FwRunCount));
+    ImageManager_Invoke(OnFwItemsUpdated, UlongToPtr(FwRunCount));
 }
 
 VOID NTAPI OnFwItemsUpdated(

@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2022 Winsider Seminars & Solutions, Inc.  All rights reserved.
  *
- * This file is part of System Informer.
+ * This file is part of Image Manager.
  *
  * Authors:
  *
@@ -289,7 +289,7 @@ VOID PhMwpToggleSignedProcessTreeFilter(
                 WindowHandle,
                 NULL,
                 L"This filter cannot function because digital signature checking is not enabled.\r\n%s",
-                L"Enable it in Options > General and restart System Informer."
+                L"Enable it in Options > General and restart Image Manager."
                 );
             return;
         }
@@ -1091,7 +1091,7 @@ VOID NTAPI PhMwpProcessesUpdatedHandler(
     _In_ PVOID Context
     )
 {
-    SystemInformer_Invoke(PhMwpOnProcessesUpdated, PhGetRunIdProvider(&PhMwpProcessProviderRegistration));
+    ImageManager_Invoke(PhMwpOnProcessesUpdated, PhGetRunIdProvider(&PhMwpProcessProviderRegistration));
 }
 
 VOID PhMwpOnProcessAdded(

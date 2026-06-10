@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2022 Winsider Seminars & Solutions, Inc.  All rights reserved.
  *
- * This file is part of System Informer.
+ * This file is part of Image Manager.
  *
  * Authors:
  *
@@ -59,7 +59,7 @@ INT WINAPI wWinMain(
     PHP_BASE_THREAD_DBG dbg;
 #endif
 
-    if (!NT_SUCCESS(PhInitializePhLib(L"System Informer")))
+    if (!NT_SUCCESS(PhInitializePhLib(L"Image Manager")))
         return 1;
     if (!NT_SUCCESS(PhInitializeDirectoryPolicy()))
         return 1;
@@ -149,9 +149,9 @@ INT WINAPI wWinMain(
             NULL,
             L"Warning.",
             L"%s",
-            L"You are attempting to run the 32-bit version of System Informer on 64-bit Windows. "
+            L"You are attempting to run the 32-bit version of Image Manager on 64-bit Windows. "
             L"Most features will not work correctly.\n\n"
-            L"Please run the 64-bit version of System Informer instead."
+            L"Please run the 64-bit version of Image Manager instead."
             );
         PhExitApplication(STATUS_IMAGE_SUBSYSTEM_NOT_PRESENT);
     }
@@ -208,7 +208,7 @@ INT WINAPI wWinMain(
 }
 
 /**
- * The main message loop for System Informer.
+ * The main message loop for Image Manager.
  *
  * Processes Windows messages for the main window, dialogs, and registered message loop filters.
  * Handles accelerator keys, dialog messages, and dispatches messages to the appropriate handlers.
@@ -899,7 +899,7 @@ VOID PhpCreateUnhandledExceptionCrashDump(
 static LPTOP_LEVEL_EXCEPTION_FILTER PhpPreviousUnhandledExceptionFilter = NULL;
 
 /**
- * Unhandled exception filter callback for System Informer.
+ * Unhandled exception filter callback for Image Manager.
  *
  * This function is called when an unhandled exception occurs. It presents the user
  * with options to create a crash dump, restart, ignore, or exit. It also generates
@@ -949,7 +949,7 @@ LONG CALLBACK PhpUnhandledExceptionCallback(
         config.dwFlags = TDF_ALLOW_DIALOG_CANCELLATION | TDF_USE_COMMAND_LINKS | TDF_EXPAND_FOOTER_AREA;
         config.pszWindowTitle = PhApplicationName;
         config.pszMainIcon = TD_ERROR_ICON;
-        config.pszMainInstruction = L"System Informer has crashed :(";
+        config.pszMainInstruction = L"Image Manager has crashed :(";
         config.cButtons = RTL_NUMBER_OF(buttons);
         config.pButtons = buttons;
         config.nDefaultButton = 106;
@@ -997,7 +997,7 @@ LONG CALLBACK PhpUnhandledExceptionCallback(
             if (PhShowMessage(
                 NULL,
                 MB_YESNO | MB_ICONWARNING | MB_DEFBUTTON2,
-                L"System Informer has crashed :(\r\n\r\n%s",
+                L"Image Manager has crashed :(\r\n\r\n%s",
                 L"Do you want to create a minidump on the Desktop?"
                 ) == IDYES)
             {
@@ -1015,7 +1015,7 @@ LONG CALLBACK PhpUnhandledExceptionCallback(
         else
             errorMessage = PhGetStatusMessage(ExceptionInfo->ExceptionRecord->ExceptionCode, 0);
 
-        title = PhCreateString(L"System Informer has crashed :(");
+        title = PhCreateString(L"Image Manager has crashed :(");
 #ifdef DEBUG
         message = PhFormatString(
             L"%s\r\n0x%08X (%s)\r\n%s",
@@ -1090,7 +1090,7 @@ NTSTATUS PhInitializeExceptionPolicy(
  * Initializes the namespace policy for the current process.
  *
  * This function creates a named mutant object in the process's namespace to enforce
- * single-instance behavior and activate previous instances of System Informer.
+ * single-instance behavior and activate previous instances of Image Manager.
  * \return NTSTATUS Successful or errant status.
  */
 NTSTATUS PhInitializeNamespacePolicy(
@@ -1234,12 +1234,12 @@ CleanupExit:
 }
 
 /**
- * Initializes the execution policy for System Informer.
+ * Initializes the execution policy for Image Manager.
  *
  * This function checks if the Shift key is held down during startup. If so, it attempts
- * to launch Task Manager (`taskmgr.exe`) instead of System Informer.
+ * to launch Task Manager (`taskmgr.exe`) instead of Image Manager.
  * This provides a quick way for users to access Task Manager if needed, for example,
- * if System Informer is set as the default Task Manager replacement and the user
+ * if Image Manager is set as the default Task Manager replacement and the user
  * wants to access the original Task Manager without changing settings.
  * \return NTSTATUS Successful or errant status.
  */
@@ -1307,7 +1307,7 @@ NTSTATUS PhInitializeMitigationPolicy(
  * Initializes a temporary desktop policy for process isolation or UI testing.
  *
  * This function creates a new random desktop, switches the current thread and input
- * to that desktop, and launches a new instance of System Informer on it. After the
+ * to that desktop, and launches a new instance of Image Manager on it. After the
  * child process exits, it restores the original desktop and cleans up resources.
  *
  * \remarks The function is typically used for scenarios where process isolation or UI testing
@@ -1417,7 +1417,7 @@ VOID PhEnableTerminationPolicy(
  * Initializes the timer policy for the system.
  *
  * This function sets up and configures the timer policy that will be used
- * throughout the System Informer application for timing operations and measurements.
+ * throughout the Image Manager application for timing operations and measurements.
  */
 NTSTATUS PhInitializeTimerPolicy(
     VOID
@@ -1433,7 +1433,7 @@ NTSTATUS PhInitializeTimerPolicy(
 /**
  * Initializes the application system.
  *
- * This function performs the necessary initialization of the System Informer
+ * This function performs the necessary initialization of the Image Manager
  * application system, setting up core components and resources required for
  * the application to function properly.
  */
@@ -1458,7 +1458,7 @@ NTSTATUS PhInitializeAppSystem(
  *
  * This function sets up and initializes all application-level settings,
  * including user preferences, configuration values, and default parameters
- * required for the System Informer application to function properly.
+ * required for the Image Manager application to function properly.
  */
 VOID PhInitializeAppSettings(
     VOID
@@ -1471,7 +1471,7 @@ VOID PhInitializeAppSettings(
     {
         // There are three possible locations for the settings file:
         // 1. The file name given in the command line.
-        // 2. A file named SystemInformer.exe.settings.json in the program directory. (This changes
+        // 2. A file named ImageManager.exe.settings.json in the program directory. (This changes
         //    based on the executable file name.)
         // 3. The default location.
         NTSTATUS status = STATUS_OBJECT_NAME_NOT_FOUND;
@@ -1525,7 +1525,7 @@ VOID PhInitializeAppSettings(
                 NULL,
                 TD_YES_BUTTON | TD_NO_BUTTON,
                 TD_WARNING_ICON,
-                L"System Informer's settings file is corrupt. Do you want to reset it?",
+                L"Image Manager's settings file is corrupt. Do you want to reset it?",
                 L"If you select No, the settings system will not function properly."
                 ) == IDYES)
             {
@@ -1553,7 +1553,7 @@ VOID PhInitializeAppSettings(
     //{
     //    // There are three possible locations for the settings file:
     //    // 1. The file name given in the command line.
-    //    // 2. A file named SystemInformer.exe.settings.json in the program directory. (This changes
+    //    // 2. A file named ImageManager.exe.settings.json in the program directory. (This changes
     //    //    based on the executable file name.)
     //    // 3. The default location.
 
@@ -1682,7 +1682,7 @@ VOID PhInitializeAppSettings(
     //                NULL,
     //                TD_YES_BUTTON | TD_NO_BUTTON,
     //                TD_WARNING_ICON,
-    //                L"System Informer's settings file is corrupt. Do you want to reset it?",
+    //                L"Image Manager's settings file is corrupt. Do you want to reset it?",
     //                L"If you select No, the settings system will not function properly."
     //                ) == IDYES)
     //            {
@@ -1988,7 +1988,7 @@ BOOLEAN NTAPI PhpCommandLineOptionCallback(
         {
             if (PhFindStringInString(upperValue, 0, L"TASKMGR.EXE") != SIZE_MAX)
             {
-                // User probably has System Informer replacing Task Manager. Force
+                // User probably has Image Manager replacing Task Manager. Force
                 // the main window to start visible.
                 PhStartupParameters.ShowVisible = TRUE;
             }
@@ -2003,7 +2003,7 @@ BOOLEAN NTAPI PhpCommandLineOptionCallback(
 /**
  * Parses and processes the application's startup parameters from the command line.
  *
- * This function defines and processes all supported command line options for System Informer.
+ * This function defines and processes all supported command line options for Image Manager.
  * It updates the global PhStartupParameters structure based on the parsed arguments, enabling
  * or disabling features, setting file paths, and configuring application behavior.
  */

@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2022 Winsider Seminars & Solutions, Inc.  All rights reserved.
  *
- * This file is part of System Informer.
+ * This file is part of Image Manager.
  *
  * Authors:
  *
@@ -608,11 +608,11 @@ INT_PTR CALLBACK PhpServicesPageProc(
                                 {
                                     SetForegroundWindow(PhMwpServiceTreeNewHandle);
 
-                                    SystemInformer_SelectTabPage(1);
+                                    ImageManager_SelectTabPage(1);
 
                                     SetFocus(PhMwpServiceTreeNewHandle);
 
-                                    SystemInformer_SelectServiceItem((PPH_SERVICE_ITEM)listviewItems[0]);
+                                    ImageManager_SelectServiceItem((PPH_SERVICE_ITEM)listviewItems[0]);
                                 }
                                 break;
                             case ID_SERVICE_GOTOPROCESS:
@@ -626,7 +626,7 @@ INT_PTR CALLBACK PhpServicesPageProc(
                                         {
                                             SetForegroundWindow(PhMwpProcessTreeNewHandle);
 
-                                            SystemInformer_SelectTabPage(0);
+                                            ImageManager_SelectTabPage(0);
 
                                             SetFocus(PhMwpProcessTreeNewHandle);
 
