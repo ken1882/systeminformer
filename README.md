@@ -1,6 +1,6 @@
 # Image Manager
 
-Image Manager is a fork of [System Informer](https://github.com/winsiderss/systeminformer) with renamed branding, executable names, package names, symbols, and related metadata.
+Image Manager is a fork of [System Informer](https://github.com/ken1882/systeminformer) with renamed branding, executable names, package names, symbols, and related metadata.
 
 This fork is intended to reduce/bypass noisy false-positive detections by lame 3rd party anti-virus/cheat softwares tied to the original project name and file reputation. Prebuilt releases are provided so you do not have to build it yourself.
 

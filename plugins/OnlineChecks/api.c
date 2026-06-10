@@ -171,7 +171,7 @@ NTSTATUS VirusTotalRequestFileReport(
     {
         if (!VirusTotalHeaderStrings(&httpHeaderString, &httpPathString, NULL, FileHash, L"/onlinechecks/virustotal/api/v3/files/"))
             return STATUS_UNSUCCESSFUL;
-        if (!NT_SUCCESS(status = PhHttpConnect(httpContext, L"imagemanager.io", PH_HTTP_DEFAULT_HTTPS_PORT)))
+        if (!NT_SUCCESS(status = PhHttpConnect(httpContext, L"systeminformer.io", PH_HTTP_DEFAULT_HTTPS_PORT)))
             goto CleanupExit;
 
         httpHeaderClientId = ClientIdHeaderString();
@@ -325,7 +325,7 @@ NTSTATUS VirusTotalRequestFileReportBatch(
 
     if (!NT_SUCCESS(status = PhHttpInitialize(&httpContext)))
         goto CleanupExit;
-    if (!NT_SUCCESS(status = PhHttpConnect(httpContext, L"imagemanager.io", PH_HTTP_DEFAULT_HTTPS_PORT)))
+    if (!NT_SUCCESS(status = PhHttpConnect(httpContext, L"systeminformer.io", PH_HTTP_DEFAULT_HTTPS_PORT)))
         goto CleanupExit;
     if (!NT_SUCCESS(status = PhHttpBeginRequest(httpContext, L"POST", L"/onlinechecks/virustotal/api/v3/files/batch", PH_HTTP_FLAG_SECURE)))
         goto CleanupExit;
@@ -518,7 +518,7 @@ NTSTATUS HybridAnalysisRequestFileReport(
             status = STATUS_UNSUCCESSFUL;
             goto CleanupExit;
         }
-        if (!NT_SUCCESS(status = PhHttpConnect(httpContext, L"imagemanager.io", PH_HTTP_DEFAULT_HTTPS_PORT)))
+        if (!NT_SUCCESS(status = PhHttpConnect(httpContext, L"systeminformer.io", PH_HTTP_DEFAULT_HTTPS_PORT)))
             goto CleanupExit;
 
         httpHeaderClientId = ClientIdHeaderString();
@@ -659,7 +659,7 @@ NTSTATUS HybridAnalysisRequestFileReportBatch(
 
     if (!NT_SUCCESS(status = PhHttpInitialize(&httpContext)))
         goto CleanupExit;
-    if (!NT_SUCCESS(status = PhHttpConnect(httpContext, L"imagemanager.io", PH_HTTP_DEFAULT_HTTPS_PORT)))
+    if (!NT_SUCCESS(status = PhHttpConnect(httpContext, L"systeminformer.io", PH_HTTP_DEFAULT_HTTPS_PORT)))
         goto CleanupExit;
     if (!NT_SUCCESS(status = PhHttpBeginRequest(httpContext, L"POST", L"/onlinechecks/hybrid-analysis/api/v2/overview/batch", PH_HTTP_FLAG_SECURE)))
         goto CleanupExit;
@@ -868,7 +868,7 @@ NTSTATUS HybridAnalysisSubmitFile(
 
     if (PhIsNullOrEmptyString(ApiKey))
     {
-        if (!NT_SUCCESS(status = PhHttpConnect(httpContext, L"imagemanager.io", PH_HTTP_DEFAULT_HTTPS_PORT)))
+        if (!NT_SUCCESS(status = PhHttpConnect(httpContext, L"systeminformer.io", PH_HTTP_DEFAULT_HTTPS_PORT)))
             goto CleanupExit;
         if (!NT_SUCCESS(status = PhHttpBeginRequest(httpContext, L"POST", L"/onlinechecks/hybrid-analysis/api/v2/quick-scan/file", PH_HTTP_FLAG_SECURE)))
             goto CleanupExit;
@@ -1008,7 +1008,7 @@ NTSTATUS HybridAnalysisSubmitFinished(
 
     if (PhIsNullOrEmptyString(ApiKey))
     {
-        if (!NT_SUCCESS(status = PhHttpConnect(httpContext, L"imagemanager.io", PH_HTTP_DEFAULT_HTTPS_PORT)))
+        if (!NT_SUCCESS(status = PhHttpConnect(httpContext, L"systeminformer.io", PH_HTTP_DEFAULT_HTTPS_PORT)))
             goto CleanupExit;
     }
     else

@@ -34,7 +34,7 @@ VOID AddOrRemoveCollapseServicesOnStart(
     )
 {
     // This is for backwards compat with PhCsCollapseServicesOnStart (dmex)
-    // https://github.com/winsiderss/imagemanager/issues/519
+    // https://github.com/ken1882/systeminformer/issues/519
 
     if (CollapseServicesOnStart)
     {
@@ -321,5 +321,4 @@ INT_PTR CALLBACK OptionsDlgProc(
 
     return FALSE;
 }
-
 

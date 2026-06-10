@@ -713,10 +713,7 @@ BOOLEAN QueryUpdateDataWithFailover(
 {
     static CONST PCWSTR Servers[] =
     {
-        L"system-informer.com",
-        L"imagemanager.com",
-        L"imagemanager.io",
-        L"imagemanager.sourceforge.io",
+        L"github.com",
     };
     static CONST USHORT Ports[] =
     {

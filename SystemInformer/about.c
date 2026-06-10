@@ -57,7 +57,7 @@ static INT_PTR CALLBACK PhpAboutDlgProc(
                 L"    <a href=\"https://github.com/jxy-s\">jxy-s</a> - Johnny Shaw\n"
                 L"    <a href=\"https://github.com/ionescu007\">ionescu007</a> - Alex Ionescu\n"
                 L"    <a href=\"https://github.com/yardenshafir\">yardenshafir</a> - Yarden Shafir\n"
-                L"    <a href=\"https://github.com/winsiderss/imagemanager/graphs/contributors\">Contributors</a> - thank you for your additions!\n"
+                L"    <a href=\"https://github.com/ken1882/systeminformer/graphs/contributors\">Contributors</a> - thank you for your additions!\n"
                 L"    Donors - thank you for your support!\n\n"
                 L"Image Manager uses the following components:\n"
                 L"    <a href=\"https://github.com/GameTechDev/PresentMon\">PresentMon</a> by Intel Corporation\n"
@@ -258,10 +258,10 @@ PPH_STRING PhGetApplicationVersionString(
     {
         PH_FORMAT format[11];
 
-        // "Image Manager %lu.%lu.%lu (<a href=\"https://github.com/winsiderss/imagemanager/commit/%hs\">%hs</a>) %ls"
+        // "Image Manager %lu.%lu.%lu (<a href=\"https://github.com/ken1882/systeminformer/commit/%hs\">%hs</a>) %ls"
         PhInitFormatS(&format[0], L"Image Manager ");
         PhInitFormatSR(&format[1], commitVersionString->sr);
-        PhInitFormatS(&format[2], L" (<a href=\"https://github.com/winsiderss/imagemanager/commit/");
+        PhInitFormatS(&format[2], L" (<a href=\"https://github.com/ken1882/systeminformer/commit/");
         PhInitFormatSR(&format[3], commitHashString->sr);
         PhInitFormatS(&format[4], L"\">");
         PhInitFormatSR(&format[5], commitHashString->sr);

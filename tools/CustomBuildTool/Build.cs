@@ -255,7 +255,7 @@ namespace CustomBuildTool
                     else
                     {
                         Program.PrintColorMessage(Program.CreateConsoleHyperlink(
-                            $"https://github.com/winsiderss/imagemanager/commit/{Build.BuildCommitHash}",
+                            $"https://github.com/ken1882/systeminformer/commit/{Build.BuildCommitHash}",
                             Build.BuildCommitHash[..8]), ConsoleColor.Blue, false);
                     }
 
@@ -2654,8 +2654,8 @@ namespace CustomBuildTool
                     {
                         Documents = new Dictionary<string, string>
                         {
-                            ["*"] = $"https://raw.githubusercontent.com/winsiderss/imagemanager/{Build.BuildCommitHash}/*",
-                            [$"{Path.Join([Build.BuildWorkingFolder, "\\"])}*"] = $"https://raw.githubusercontent.com/winsiderss/imagemanager/{Build.BuildCommitHash}/*"
+                            ["*"] = $"https://raw.githubusercontent.com/ken1882/systeminformer/{Build.BuildCommitHash}/*",
+                            [$"{Path.Join([Build.BuildWorkingFolder, "\\"])}*"] = $"https://raw.githubusercontent.com/ken1882/systeminformer/{Build.BuildCommitHash}/*"
                         }
                     };
 
