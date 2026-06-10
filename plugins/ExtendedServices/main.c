@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2022 Winsider Seminars & Solutions, Inc.  All rights reserved.
  *
- * This file is part of System Informer.
+ * This file is part of Image Manager.
  *
  * Authors:
  *
@@ -33,9 +33,9 @@ VOID NTAPI MenuItemCallback(
     {
     case ID_SERVICE_GOTOSERVICE:
         {
-            SystemInformer_SelectTabPage(1);
-            SystemInformer_SelectServiceItem((PPH_SERVICE_ITEM)menuItem->Context);
-            SystemInformer_ToggleVisible(TRUE);
+            ImageManager_SelectTabPage(1);
+            ImageManager_SelectServiceItem((PPH_SERVICE_ITEM)menuItem->Context);
+            ImageManager_ToggleVisible(TRUE);
         }
         break;
     case ID_SERVICE_START:

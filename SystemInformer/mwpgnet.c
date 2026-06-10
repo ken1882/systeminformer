@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2022 Winsider Seminars & Solutions, Inc.  All rights reserved.
  *
- * This file is part of System Informer.
+ * This file is part of Image Manager.
  *
  * Authors:
  *
@@ -423,7 +423,7 @@ VOID NTAPI PhMwpNetworkItemsUpdatedHandler(
     _In_ PVOID Context
     )
 {
-    SystemInformer_Invoke(PhMwpOnNetworkItemsUpdated, PhGetRunIdProvider(&PhMwpNetworkProviderRegistration));
+    ImageManager_Invoke(PhMwpOnNetworkItemsUpdated, PhGetRunIdProvider(&PhMwpNetworkProviderRegistration));
 }
 
 /**

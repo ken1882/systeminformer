@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2022 Winsider Seminars & Solutions, Inc.  All rights reserved.
  *
- * This file is part of System Informer.
+ * This file is part of Image Manager.
  *
  * Authors:
  *
@@ -265,7 +265,7 @@ VOID InitializeDbPath(
 {
     PPH_STRING fileName;
 
-    if (SystemInformer_IsPortableMode())
+    if (ImageManager_IsPortableMode())
     {
         fileName = PhGetApplicationDirectoryFileNameZ(L"usernotesdb.xml", TRUE);
     }
@@ -462,7 +462,7 @@ HRESULT CALLBACK TaskDialogBootstrapCallback(
                             config.dwFlags = TDF_ALLOW_DIALOG_CANCELLATION | TDF_POSITION_RELATIVE_TO_WINDOW;
                             config.dwCommonButtons = TDCBF_CLOSE_BUTTON;
                             config.pszMainIcon = TD_ERROR_ICON;
-                            config.pszWindowTitle = SystemInformer_GetWindowName();
+                            config.pszWindowTitle = ImageManager_GetWindowName();
                             config.pszMainInstruction = L"Unable to update the IFEO key for priority.";
                             config.cxWidth = 200;
 
@@ -505,7 +505,7 @@ HRESULT CALLBACK TaskDialogBootstrapCallback(
                             config.dwFlags = TDF_ALLOW_DIALOG_CANCELLATION | TDF_POSITION_RELATIVE_TO_WINDOW;
                             config.dwCommonButtons = TDCBF_CLOSE_BUTTON;
                             config.pszMainIcon = TD_ERROR_ICON;
-                            config.pszWindowTitle = SystemInformer_GetWindowName();
+                            config.pszWindowTitle = ImageManager_GetWindowName();
                             config.pszMainInstruction = L"Unable to update the IFEO key for priority.";
                             config.cxWidth = 200;
 
@@ -548,7 +548,7 @@ HRESULT CALLBACK TaskDialogBootstrapCallback(
                             config.dwFlags = TDF_ALLOW_DIALOG_CANCELLATION | TDF_POSITION_RELATIVE_TO_WINDOW;
                             config.dwCommonButtons = TDCBF_CLOSE_BUTTON;
                             config.pszMainIcon = TD_ERROR_ICON;
-                            config.pszWindowTitle = SystemInformer_GetWindowName();
+                            config.pszWindowTitle = ImageManager_GetWindowName();
                             config.pszMainInstruction = L"Unable to update the IFEO key for priority.";
                             config.cxWidth = 200;
 
@@ -613,7 +613,7 @@ VOID ShowProcessPriorityDialog(
     config.hMainIcon = PhGetApplicationIcon(FALSE, PhGetWindowDpi(MenuItem->OwnerWindow));
     config.pszWindowTitle = PhGetString(FileName);
     config.pszMainInstruction = L"Select the default process priority.";
-    config.pszContent = L"The process priority will be applied by Windows even when System Informer isn't currently running. "
+    config.pszContent = L"The process priority will be applied by Windows even when Image Manager isn't currently running. "
     L"Note: Realtime priority requires the User has the SeIncreaseBasePriorityPrivilege or the process running as Administrator.";
     config.nDefaultButton = IDCANCEL;
     config.pRadioButtons = TaskDialogRadioButtonArray;
@@ -696,7 +696,7 @@ VOID ShowProcessIoPriorityDialog(
     config.hMainIcon = PhGetApplicationIcon(FALSE, PhGetWindowDpi(MenuItem->OwnerWindow));
     config.pszWindowTitle = PhGetString(FileName);
     config.pszMainInstruction = L"Select the default process IO priority.";
-    config.pszContent = L"The IO priority will be applied by Windows even when System Informer isn't currently running. "
+    config.pszContent = L"The IO priority will be applied by Windows even when Image Manager isn't currently running. "
     L"Note: High IO priority requires the User has the SeIncreaseBasePriorityPrivilege or the process running as Administrator.";
     config.nDefaultButton = IDCANCEL;
     config.pRadioButtons = TaskDialogRadioButtonArray;
@@ -774,7 +774,7 @@ VOID ShowProcessPagePriorityDialog(
     config.hMainIcon = PhGetApplicationIcon(FALSE, PhGetWindowDpi(MenuItem->OwnerWindow));
     config.pszWindowTitle = PhGetString(FileName);
     config.pszMainInstruction = L"Select the default process page priority.";
-    config.pszContent = L"The page priority will be applied by Windows even when System Informer isn't currently running.";
+    config.pszContent = L"The page priority will be applied by Windows even when Image Manager isn't currently running.";
     config.nDefaultButton = IDCANCEL;
     config.pRadioButtons = TaskDialogRadioButtonArray;
     config.cRadioButtons = RTL_NUMBER_OF(TaskDialogRadioButtonArray);

@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2022 Winsider Seminars & Solutions, Inc.  All rights reserved.
  *
- * This file is part of System Informer.
+ * This file is part of Image Manager.
  *
  * Authors:
  *
@@ -1625,7 +1625,7 @@ INT_PTR CALLBACK EtpObjHandlesPageDlgProc(
 
                                 if (processItem = PhReferenceProcessItem(listviewItems[0]->ProcessId))
                                 {
-                                    SystemInformer_ShowProcessProperties(processItem);
+                                    ImageManager_ShowProcessProperties(processItem);
                                     PhDereferenceObject(processItem);
                                     PhFree(listviewItems);
                                     return TRUE;
@@ -1684,7 +1684,7 @@ INT_PTR CALLBACK EtpObjHandlesPageDlgProc(
 
                         if (processItem = PhReferenceProcessItem(entry->ProcessId))
                         {
-                            SystemInformer_ShowProcessProperties(processItem);
+                            ImageManager_ShowProcessProperties(processItem);
                             PhDereferenceObject(processItem);
                         }
                     }
@@ -1870,7 +1870,7 @@ INT_PTR CALLBACK EtpObjHandlesPageDlgProc(
 
                             if (processItem = PhReferenceProcessItem(listviewItems[0]->ProcessId))
                             {
-                                SystemInformer_ShowProcessProperties(processItem);
+                                ImageManager_ShowProcessProperties(processItem);
                                 PhDereferenceObject(processItem);
                             }
                         }

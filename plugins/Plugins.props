@@ -6,7 +6,7 @@
         <OutDir>$(SystemInformerRoot)bin\$(Configuration)$(PlatformArchitecture)\plugins\</OutDir>
         <IntDir>$(ProjectDir)obj\$(Configuration)$(PlatformArchitecture)\</IntDir>
         <!-- Debugging -->
-        <LocalDebuggerCommand>$(SystemInformerRoot)bin\$(Configuration)$(PlatformArchitecture)\SystemInformer.exe</LocalDebuggerCommand>
+        <LocalDebuggerCommand>$(SystemInformerRoot)bin\$(Configuration)$(PlatformArchitecture)\ImageManager.exe</LocalDebuggerCommand>
         <LocalDebuggerWorkingDirectory>$(SystemInformerRoot)bin\$(Configuration)$(PlatformArchitecture)\</LocalDebuggerWorkingDirectory>
         <DebuggerFlavor>WindowsLocalDebugger</DebuggerFlavor>
     </PropertyGroup>
@@ -94,7 +94,7 @@
         </ClCompile>
         <Link>
             <AdditionalLibraryDirectories>$(SystemInformerRoot)phlib\bin\$(Configuration)$(PlatformArchitecture);$(SystemInformerRoot)sdk\lib\$(Configuration)$(PlatformArchitecture);$(SystemInformerRoot)tools\thirdparty\bin\$(Configuration)$(PlatformArchitecture);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-            <AdditionalDependencies>SystemInformer.lib;thirdparty.lib;ntdll.lib;gdiplus.lib;%(AdditionalDependencies)</AdditionalDependencies>
+            <AdditionalDependencies>ImageManager.lib;thirdparty.lib;ntdll.lib;gdiplus.lib;%(AdditionalDependencies)</AdditionalDependencies>
         </Link>
         <ResourceCompile>
             <AdditionalIncludeDirectories>$(SolutionDir)include;$(SystemInformerRoot)phnt\include;$(SystemInformerRoot)sdk\include\$(Configuration)$(PlatformArchitecture);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>

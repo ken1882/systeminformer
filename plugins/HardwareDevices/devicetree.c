@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2022 Winsider Seminars & Solutions, Inc.  All rights reserved.
  *
- * This file is part of System Informer.
+ * This file is part of Image Manager.
  *
  * Authors:
  *
@@ -394,7 +394,7 @@ NTSTATUS NTAPI DeviceTreePublishThread(
 {
     BOOLEAN force = PtrToUlong(Parameter) ? TRUE : FALSE;
 
-    SystemInformer_Invoke(DeviceTreePublish, DeviceTreeCreateIfNecessary(force));
+    ImageManager_Invoke(DeviceTreePublish, DeviceTreeCreateIfNecessary(force));
 
     return STATUS_SUCCESS;
 }
@@ -882,7 +882,7 @@ BOOLEAN NTAPI DeviceTreeCallback(
 
             selectedItem = PhShowEMenu(
                 menu,
-                SystemInformer_GetWindowHandle(),
+                ImageManager_GetWindowHandle(),
                 PH_EMENU_SHOW_LEFTRIGHT,
                 PH_ALIGN_LEFT | PH_ALIGN_TOP,
                 contextMenuEvent->Location.x,
@@ -990,8 +990,8 @@ BOOLEAN NTAPI DeviceTreeCallback(
                             {
                                 if (serviceItem = PhReferenceServiceItem(&serviceName->sr))
                                 {
-                                    SystemInformer_SelectTabPage(1);
-                                    SystemInformer_SelectServiceItem(serviceItem);
+                                    ImageManager_SelectTabPage(1);
+                                    ImageManager_SelectServiceItem(serviceItem);
                                     PhDereferenceObject(serviceItem);
                                 }
                             }
@@ -1738,7 +1738,7 @@ VOID NTAPI DeviceProviderCallbackHandler(
 {
     if (DeviceTabCreated && DeviceTabSelected && AutoRefreshDeviceTree)
     {
-        SystemInformer_Invoke(DeviceTreePublish, DeviceTreeCreateIfNecessary(FALSE));
+        ImageManager_Invoke(DeviceTreePublish, DeviceTreeCreateIfNecessary(FALSE));
     }
 }
 

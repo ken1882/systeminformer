@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2022 Winsider Seminars & Solutions, Inc.  All rights reserved.
  *
- * This file is part of System Informer.
+ * This file is part of Image Manager.
  *
  * Authors:
  *
@@ -92,7 +92,7 @@ PPH_UPDATER_CONTEXT CreateUpdateContext(
     context->StartupCheck = StartupCheck;
     context->Cleanup = TRUE;
     context->WindowDpi = USER_DEFAULT_SCREEN_DPI;
-    context->PortableMode = !!SystemInformer_IsPortableMode();
+    context->PortableMode = !!ImageManager_IsPortableMode();
     context->Channel = PhGetBuildReleaseChannel();
     context->CryptoBackend = UpdaterCryptoBackendSymCrypt;
 
@@ -714,9 +714,9 @@ BOOLEAN QueryUpdateDataWithFailover(
     static CONST PCWSTR Servers[] =
     {
         L"system-informer.com",
-        L"systeminformer.com",
-        L"systeminformer.io",
-        L"systeminformer.sourceforge.io",
+        L"imagemanager.com",
+        L"imagemanager.io",
+        L"imagemanager.sourceforge.io",
     };
     static CONST USHORT Ports[] =
     {
@@ -781,7 +781,7 @@ NTSTATUS UpdateCheckSilentThread(
             if (PhGetIntegerSetting(SETTING_NAME_SHOW_NOTIFICATION))
             {
                 if (!HR_SUCCESS(PhShowIconNotificationEx(
-                    L"New version of System Informer available",
+                    L"New version of Image Manager available",
                     L"Help menu > Check for updates",
                     5000,
                     NULL,
@@ -1405,7 +1405,7 @@ HRESULT CALLBACK TaskDialogBootstrapCallback(
             PhSetApplicationWindowIcon(WindowHandle);
 
             // Center the update window on PH if it's visible else we center on the desktop.
-            PhCenterWindow(WindowHandle, SystemInformer_GetWindowHandle());
+            PhCenterWindow(WindowHandle, ImageManager_GetWindowHandle());
 
             PhRegisterWindowCallback(WindowHandle, PH_PLUGIN_WINDOW_EVENT_TYPE_TOPMOST, NULL);
 
@@ -1589,7 +1589,7 @@ VOID ShowStartupUpdateDialog(
     if (PhGetIntegerSetting(SETTING_NAME_SHOW_NOTIFICATION))
     {
         if (HR_SUCCESS(PhShowIconNotificationEx(
-            L"New version of System Informer available",
+            L"New version of Image Manager available",
             L"Help menu > Check for updates",
             5000,
             NULL,

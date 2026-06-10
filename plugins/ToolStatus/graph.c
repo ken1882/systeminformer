@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2022 Winsider Seminars & Solutions, Inc.  All rights reserved.
  *
- * This file is part of System Informer.
+ * This file is part of Image Manager.
  *
  * Authors:
  *
@@ -160,7 +160,7 @@ VOID ToolbarGraphsInitializeDpi(
     VOID
     )
 {
-    ULONG newDpi = SystemInformer_GetWindowDpi();
+    ULONG newDpi = ImageManager_GetWindowDpi();
     ULONG newWidth = PhScaleToDisplay(145, newDpi);
     LONG newHeight = ToolbarGetCommandBarButtonHeight();
 
@@ -297,7 +297,7 @@ VOID ToolbarCreateGraphs(
         ULONG width;
 
         height = (ULONG)ToolbarGetCommandBarButtonHeight();
-        width = PhScaleToDisplay(145, SystemInformer_GetWindowDpi());
+        width = PhScaleToDisplay(145, ImageManager_GetWindowDpi());
 
         for (ULONG i = 0; i < PhpToolbarGraphList->Count; i++)
         {
@@ -416,7 +416,7 @@ VOID ToolbarSetVisibleGraph(
     if (Visible)
     {
         ULONG height = (ULONG)ToolbarGetCommandBarButtonHeight();
-        ULONG width = PhScaleToDisplay(145, SystemInformer_GetWindowDpi());
+        ULONG width = PhScaleToDisplay(145, ImageManager_GetWindowDpi());
 
         SetFlag(Graph->Flags, TOOLSTATUS_GRAPH_ENABLED);
         ToolbarAddGraph(Graph, width, height);
@@ -773,7 +773,7 @@ BOOLEAN CpuHistoryGraphMessageCallback(
             PPH_GRAPH_DRAW_INFO drawInfo = getDrawInfo->DrawInfo;
 
             if (graph->GraphDpi == 0)
-                graph->GraphDpi = SystemInformer_GetWindowDpi();
+                graph->GraphDpi = ImageManager_GetWindowDpi();
 
             graph->GraphColor1 = PhGetIntegerSetting(SETTING_COLOR_CPU_KERNEL);
             graph->GraphColor2 = PhGetIntegerSetting(SETTING_COLOR_CPU_USER);
@@ -880,7 +880,7 @@ BOOLEAN PhysicalHistoryGraphMessageCallback(
             PPH_GRAPH_DRAW_INFO drawInfo = getDrawInfo->DrawInfo;
 
             if (graph->GraphDpi == 0)
-                graph->GraphDpi = SystemInformer_GetWindowDpi();
+                graph->GraphDpi = ImageManager_GetWindowDpi();
 
             graph->GraphColor1 = PhGetIntegerSetting(SETTING_COLOR_PHYSICAL);
 
@@ -986,7 +986,7 @@ BOOLEAN CommitHistoryGraphMessageCallback(
             PPH_GRAPH_DRAW_INFO drawInfo = getDrawInfo->DrawInfo;
 
             if (graph->GraphDpi == 0)
-                graph->GraphDpi = SystemInformer_GetWindowDpi();
+                graph->GraphDpi = ImageManager_GetWindowDpi();
 
             graph->GraphColor1 = PhGetIntegerSetting(SETTING_COLOR_PRIVATE);
 
@@ -1092,7 +1092,7 @@ BOOLEAN IoHistoryGraphMessageCallback(
             PPH_GRAPH_DRAW_INFO drawInfo = getDrawInfo->DrawInfo;
 
             if (graph->GraphDpi == 0)
-                graph->GraphDpi = SystemInformer_GetWindowDpi();
+                graph->GraphDpi = ImageManager_GetWindowDpi();
 
             graph->GraphColor1 = PhGetIntegerSetting(SETTING_COLOR_IO_READ_OTHER);
             graph->GraphColor2 = PhGetIntegerSetting(SETTING_COLOR_IO_WRITE);

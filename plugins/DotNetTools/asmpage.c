@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2022 Winsider Seminars & Solutions, Inc.  All rights reserved.
  *
- * This file is part of System Informer.
+ * This file is part of Image Manager.
  *
  * Authors:
  *
@@ -1223,7 +1223,7 @@ VOID DotNetAsmSetOptionsTreeList(
 }
 
 /**
- * Starts or attaches to the System Informer .NET ETW trace session.
+ * Starts or attaches to the Image Manager .NET ETW trace session.
  *
  * \param SessionHandle Receives the ETW trace session handle on success.
  * \param Properties Receives a pointer to the allocated EVENT_TRACE_PROPERTIES on success.

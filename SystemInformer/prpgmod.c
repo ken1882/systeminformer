@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2022 Winsider Seminars & Solutions, Inc.  All rights reserved.
  *
- * This file is part of System Informer.
+ * This file is part of Image Manager.
  *
  * Authors:
  *
@@ -590,7 +590,7 @@ VOID PhpProcessModulesSave(
     PPH_PROCESS_ITEM processItem;
 
     processItem = PhReferenceProcessItem(ModulesContext->Provider->ProcessId);
-    PhInitFormatS(&format[0], L"System Informer (");
+    PhInitFormatS(&format[0], L"Image Manager (");
     PhInitFormatS(&format[1], processItem ? PhGetStringOrDefault(processItem->ProcessName, L"Unknown process") : L"Unknown process");
     PhInitFormatS(&format[2], L") Modules");
     PhInitFormatS(&format[3], L".txt");

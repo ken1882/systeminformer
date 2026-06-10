@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2022 Winsider Seminars & Solutions, Inc.  All rights reserved.
  *
- * This file is part of System Informer.
+ * This file is part of Image Manager.
  *
  * Authors:
  *
@@ -114,7 +114,7 @@ VOID ShowUpdateInstallDialog(
     config.pButtons = TaskDialogButtonArray;
     config.cButtons = RTL_NUMBER_OF(TaskDialogButtonArray);
 
-    config.pszWindowTitle = L"System Informer - Updater";
+    config.pszWindowTitle = L"Image Manager - Updater";
     if (Context->SwitchingChannel)
     {
         switch (Context->Channel)
@@ -189,7 +189,7 @@ PPH_STRING UpdaterGetLatestVersionText(
     else
     {
         version = PhFormatString(
-            L"System Informer %lu.%lu.%lu.%lu",
+            L"Image Manager %lu.%lu.%lu.%lu",
             majorVersion,
             minorVersion,
             buildVersion,
@@ -228,7 +228,7 @@ VOID ShowLatestVersionDialog(
     config.pfCallback = FinalTaskDialogCallbackProc;
     config.lpCallbackData = (LONG_PTR)Context;
 
-    config.pszWindowTitle = L"System Informer - Updater";
+    config.pszWindowTitle = L"Image Manager - Updater";
     config.pszMainInstruction = L"You're running the latest version.";
     config.pszContent = PH_AUTO_T(PH_STRING, UpdaterGetLatestVersionText(Context))->Buffer;
 
@@ -254,7 +254,7 @@ VOID ShowNewerVersionDialog(
     config.pfCallback = FinalTaskDialogCallbackProc;
     config.lpCallbackData = (LONG_PTR)Context;
 
-    config.pszWindowTitle = L"System Informer - Updater";
+    config.pszWindowTitle = L"Image Manager - Updater";
     config.pszMainInstruction = L"You're running a pre-release build.";
     config.pszContent = PH_AUTO_T(PH_STRING, UpdaterGetLatestVersionText(Context))->Buffer;
 
@@ -282,7 +282,7 @@ VOID ShowUpdateFailedDialog(
     config.dwCommonButtons = TDCBF_CLOSE_BUTTON | TDCBF_RETRY_BUTTON;
     config.hMainIcon = PhGetApplicationIcon(FALSE, Context->WindowDpi);
 
-    config.pszWindowTitle = L"System Informer - Updater";
+    config.pszWindowTitle = L"Image Manager - Updater";
     if (Context->SwitchingChannel)
         config.pszMainInstruction = L"Error downloading the channel.";
     else

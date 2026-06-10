@@ -255,7 +255,7 @@ namespace CustomBuildTool
                     else
                     {
                         Program.PrintColorMessage(Program.CreateConsoleHyperlink(
-                            $"https://github.com/winsiderss/systeminformer/commit/{Build.BuildCommitHash}",
+                            $"https://github.com/winsiderss/imagemanager/commit/{Build.BuildCommitHash}",
                             Build.BuildCommitHash[..8]), ConsoleColor.Blue, false);
                     }
 
@@ -565,9 +565,9 @@ namespace CustomBuildTool
 
             string[] buildWow64Files =
             [
-                "SystemInformer.exe",
-                "SystemInformer.pdb",
-                "SystemInformer.sig",
+                "ImageManager.exe",
+                "ImageManager.pdb",
+                "ImageManager.sig",
                 "plugins\\DotNetTools.dll",
                 "plugins\\DotNetTools.pdb",
                 "plugins\\DotNetTools.sig",
@@ -762,7 +762,7 @@ namespace CustomBuildTool
             {
                 if (Flags.HasFlag(configuration) && Flags.HasFlag(architecture))
                 {
-                    string exePath = Path.Join([baseDirectory, folder, "SystemInformer.exe"]);
+                    string exePath = Path.Join([baseDirectory, folder, "ImageManager.exe"]);
 
                     if (!File.Exists(exePath))
                     {
@@ -862,7 +862,7 @@ namespace CustomBuildTool
             };
             string[] buildDriverFiles =
             [
-                "SystemInformer.sys",
+                "ImageManager.sys",
                 "ksi.dll"
             ];
 
@@ -953,8 +953,8 @@ namespace CustomBuildTool
 
             string[] buildSdkFiles =
             [
-                "SystemInformer.lib",
-                "SystemInformer.pdb"
+                "ImageManager.lib",
+                "ImageManager.pdb"
             ];
 
             string baseDirectory = GetBuildBaseDirectory(Flags);
@@ -1149,7 +1149,7 @@ namespace CustomBuildTool
                 string toolchainSuffix = GetToolchainSuffix(Flags);
                 string buildConfiguration = Flags.HasFlag(BuildFlags.BuildDebug) ? "Debug" : "Release";
                 string sourceExecutableFile = Path.Join([Build.BuildWorkingFolder, $"tools\\CustomSetupTool\\bin\\{buildConfiguration}32\\CustomSetupTool.exe"]);
-                string targetSetupExecutableFile = Path.Join([Build.BuildOutputFolder, $"systeminformer-build{toolchainSuffix}-{Channel}-setup.exe"]);
+                string targetSetupExecutableFile = Path.Join([Build.BuildOutputFolder, $"imagemanager-build{toolchainSuffix}-{Channel}-setup.exe"]);
 
                 Utils.CreateOutputDirectory();
 
@@ -1188,8 +1188,8 @@ namespace CustomBuildTool
             try
             {
                 string toolchainSuffix = GetToolchainSuffix(Flags);
-                string sevenZipFilePath = Path.Join([Build.BuildOutputFolder, $"systeminformer-build{toolchainSuffix}-bin.7z"]);
-                string base64FilePath = Path.Join([Build.BuildOutputFolder, "systeminformer-build-bin.b64"]);
+                string sevenZipFilePath = Path.Join([Build.BuildOutputFolder, $"imagemanager-build{toolchainSuffix}-bin.7z"]);
+                string base64FilePath = Path.Join([Build.BuildOutputFolder, "imagemanager-build-bin.b64"]);
 
                 if (!File.Exists(sevenZipFilePath))
                 {
@@ -1228,7 +1228,7 @@ namespace CustomBuildTool
             try
             {
                 string toolchainSuffix = GetToolchainSuffix(Flags);
-                string zipFilePath = Path.Join([Build.BuildOutputFolder, $"systeminformer-build{toolchainSuffix}-sdk.zip"]);
+                string zipFilePath = Path.Join([Build.BuildOutputFolder, $"imagemanager-build{toolchainSuffix}-sdk.zip"]);
 
                 Utils.CreateOutputDirectory();
 
@@ -1268,12 +1268,12 @@ namespace CustomBuildTool
             var buildZipFilesMap = new Dictionary<string, string>(4, StringComparer.OrdinalIgnoreCase);
 
             if (Flags.HasFlag(BuildFlags.Build32bit))
-                buildZipFilesMap.Add(Path.Join([buildDirectory, $"{buildConfiguration}32"]), $"systeminformer-build{toolchainSuffix}-win32-bin.zip");
+                buildZipFilesMap.Add(Path.Join([buildDirectory, $"{buildConfiguration}32"]), $"imagemanager-build{toolchainSuffix}-win32-bin.zip");
             if (Flags.HasFlag(BuildFlags.Build64bit))
-                buildZipFilesMap.Add(Path.Join([buildDirectory, $"{buildConfiguration}64"]), $"systeminformer-build{toolchainSuffix}-win64-bin.zip");
+                buildZipFilesMap.Add(Path.Join([buildDirectory, $"{buildConfiguration}64"]), $"imagemanager-build{toolchainSuffix}-win64-bin.zip");
             if (Flags.HasFlag(BuildFlags.BuildArm64bit))
-                buildZipFilesMap.Add(Path.Join([buildDirectory, $"{buildConfiguration}ARM64"]), $"systeminformer-build{toolchainSuffix}-arm64-bin.zip");
-            buildZipFilesMap.Add(buildDirectory, $"systeminformer-build{toolchainSuffix}-bin.zip");
+                buildZipFilesMap.Add(Path.Join([buildDirectory, $"{buildConfiguration}ARM64"]), $"imagemanager-build{toolchainSuffix}-arm64-bin.zip");
+            buildZipFilesMap.Add(buildDirectory, $"imagemanager-build{toolchainSuffix}-bin.zip");
 
             Utils.CreateOutputDirectory();
 
@@ -1284,6 +1284,9 @@ namespace CustomBuildTool
             {
                 foreach (var zipEntry in buildZipFilesMap)
                 {
+                    if (!Directory.Exists(zipEntry.Key))
+                        continue;
+
                     string zipFilePath = Path.Join([BuildOutputFolder, zipEntry.Value]);
                     string sevenZipFilePath = Path.ChangeExtension(zipFilePath, ".7z");
 
@@ -1295,6 +1298,9 @@ namespace CustomBuildTool
 
                 foreach (var zipEntry in buildZipFilesMap)
                 {
+                    if (!Directory.Exists(zipEntry.Key))
+                        continue;
+
                     string zipFilePath = Path.Join([BuildOutputFolder, zipEntry.Value]);
                     string sevenZipFilePath = Path.ChangeExtension(zipFilePath, ".7z");
                     bool filterPlatforms = string.Equals(zipEntry.Key, buildDirectory, StringComparison.OrdinalIgnoreCase);
@@ -1310,6 +1316,9 @@ namespace CustomBuildTool
 
                 foreach (var zipEntry in buildZipFilesMap)
                 {
+                    if (!Directory.Exists(zipEntry.Key))
+                        continue;
+
                     string zipFilePath = Path.Join([BuildOutputFolder, zipEntry.Value]);
                     string sevenZipFilePath = Path.ChangeExtension(zipFilePath, ".7z");
 
@@ -1380,7 +1389,7 @@ namespace CustomBuildTool
 
                 if (MsixPackageBuild)
                 {
-                    string zipFilePath = Path.Join([Build.BuildOutputFolder, $"systeminformer-setup{toolchainSuffix}-package-pdb.zip"]);
+                    string zipFilePath = Path.Join([Build.BuildOutputFolder, $"imagemanager-setup{toolchainSuffix}-package-pdb.zip"]);
 
                     Win32.DeleteFile(
                         zipFilePath,
@@ -1400,7 +1409,7 @@ namespace CustomBuildTool
                 }
                 else
                 {
-                    string zipFilePath = Path.Join([Build.BuildOutputFolder, $"systeminformer-build{toolchainSuffix}-pdb.zip"]);
+                    string zipFilePath = Path.Join([Build.BuildOutputFolder, $"imagemanager-build{toolchainSuffix}-pdb.zip"]);
 
                     Win32.DeleteFile(
                         zipFilePath,
@@ -1449,7 +1458,7 @@ namespace CustomBuildTool
             try
             {
                 string toolchainSuffix = GetToolchainSuffix(Flags);
-                string zipFilePath = Path.Join([Build.BuildOutputFolder, $"systeminformer{toolchainSuffix}-symbols-package.zip"]);
+                string zipFilePath = Path.Join([Build.BuildOutputFolder, $"imagemanager{toolchainSuffix}-symbols-package.zip"]);
 
                 Win32.DeleteFile(zipFilePath);
 
@@ -1540,9 +1549,9 @@ namespace CustomBuildTool
             {
                 string[] fallbackZips =
                 [
-                    "systeminformer-build-win32-bin.zip",
-                    "systeminformer-build-win64-bin.zip",
-                    "systeminformer-build-arm64-bin.zip"
+                    "imagemanager-build-win32-bin.zip",
+                    "imagemanager-build-win64-bin.zip",
+                    "imagemanager-build-arm64-bin.zip"
                 ];
 
                 foreach (var zip in fallbackZips)
@@ -1556,9 +1565,9 @@ namespace CustomBuildTool
             // Actually check which platforms were built by checking for the existence of the bin zips
             string[] possibleZips =
             [
-                "systeminformer-build-win32-bin.zip",
-                "systeminformer-build-win64-bin.zip",
-                "systeminformer-build-arm64-bin.zip"
+                "imagemanager-build-win32-bin.zip",
+                "imagemanager-build-win64-bin.zip",
+                "imagemanager-build-arm64-bin.zip"
             ];
 
             foreach (var zip in possibleZips)
@@ -1571,10 +1580,10 @@ namespace CustomBuildTool
             // Always include combined bin, pdb, and setup files if present
             string[] alwaysFiles =
             [
-                "systeminformer-build-bin.zip",
-                "systeminformer-build-pdb.zip",
-                "systeminformer-build-release-setup.exe",
-                "systeminformer-build-canary-setup.exe"
+                "imagemanager-build-bin.zip",
+                "imagemanager-build-pdb.zip",
+                "imagemanager-build-release-setup.exe",
+                "imagemanager-build-canary-setup.exe"
             ];
 
             foreach (var file in alwaysFiles)
@@ -1590,7 +1599,7 @@ namespace CustomBuildTool
             try
             {
                 Utils.CreateOutputDirectory();
-                using var checksumWriter = new StreamWriter($"{BuildOutputFolder}\\systeminformer-build-checksums.txt", false, Utils.UTF8NoBOM);
+                using var checksumWriter = new StreamWriter($"{BuildOutputFolder}\\imagemanager-build-checksums.txt", false, Utils.UTF8NoBOM);
 
                 foreach (var fileName in buildUploadFiles)
                 {
@@ -2511,9 +2520,9 @@ namespace CustomBuildTool
             // Cleanup package manifests.
             //
 
-            Win32.DeleteFile($"{BuildOutputFolder}\\systeminformer-build-package-x32.appx", Flags);
-            Win32.DeleteFile($"{BuildOutputFolder}\\systeminformer-build-package-x64.appx", Flags);
-            Win32.DeleteFile($"{BuildOutputFolder}\\systeminformer-build-package.msixbundle", Flags);
+            Win32.DeleteFile($"{BuildOutputFolder}\\imagemanager-build-package-x32.appx", Flags);
+            Win32.DeleteFile($"{BuildOutputFolder}\\imagemanager-build-package-x64.appx", Flags);
+            Win32.DeleteFile($"{BuildOutputFolder}\\imagemanager-build-package.msixbundle", Flags);
             Win32.DeleteFile($"{BuildWorkingFolder}\\tools\\msix\\MsixManifest32.xml", Flags);
             Win32.DeleteFile($"{BuildWorkingFolder}\\tools\\msix\\MsixManifest64.xml", Flags);
             Win32.DeleteFile($"{BuildWorkingFolder}\\tools\\msix\\MsixPackage32.map", Flags);
@@ -2535,7 +2544,7 @@ namespace CustomBuildTool
             if (Flags.HasFlag(BuildFlags.Build32bit) && File.Exists("tools\\msix\\MsixPackage32.map"))
             {
                 Program.PrintColorMessage(BuildTimeSpan(), ConsoleColor.DarkGray, false, Flags);
-                Program.PrintColorMessage("Building systeminformer-build-package-x32.msix...", ConsoleColor.Cyan, false);
+                Program.PrintColorMessage("Building imagemanager-build-package-x32.msix...", ConsoleColor.Cyan, false);
 
                 string result = Utils.ExecuteMsixCommand(
                     [
@@ -2544,7 +2553,7 @@ namespace CustomBuildTool
                         "/f",
                         $"{BuildWorkingFolder}\\tools\\msix\\MsixPackage32.map",
                         "/p",
-                        $"{BuildOutputFolder}\\systeminformer-build-package-x32.msix"
+                        $"{BuildOutputFolder}\\imagemanager-build-package-x32.msix"
                     ]
                     );
 
@@ -2554,13 +2563,13 @@ namespace CustomBuildTool
                     return false;
                 }
 
-                Program.PrintColorMessage(Win32.GetFileSize($"{BuildOutputFolder}\\systeminformer-build-package-x32.msix").ToPrettySize(), ConsoleColor.Green);
+                Program.PrintColorMessage(Win32.GetFileSize($"{BuildOutputFolder}\\imagemanager-build-package-x32.msix").ToPrettySize(), ConsoleColor.Green);
             }
 
             if (Flags.HasFlag(BuildFlags.Build64bit) && File.Exists("tools\\msix\\MsixPackage64.map"))
             {
                 Program.PrintColorMessage(BuildTimeSpan(), ConsoleColor.DarkGray, false, Flags);
-                Program.PrintColorMessage("Building systeminformer-build-package-x64.msix...", ConsoleColor.Cyan, false);
+                Program.PrintColorMessage("Building imagemanager-build-package-x64.msix...", ConsoleColor.Cyan, false);
 
                 string result = Utils.ExecuteMsixCommand(
                     [
@@ -2569,7 +2578,7 @@ namespace CustomBuildTool
                         "/f",
                         $"{BuildWorkingFolder}\\tools\\msix\\MsixPackage64.map",
                         "/p",
-                        $"{BuildOutputFolder}\\systeminformer-build-package-x64.msix"
+                        $"{BuildOutputFolder}\\imagemanager-build-package-x64.msix"
                     ]
                     );
 
@@ -2579,7 +2588,7 @@ namespace CustomBuildTool
                     return false;
                 }
 
-                Program.PrintColorMessage(Win32.GetFileSize($"{BuildOutputFolder}\\systeminformer-build-package-x64.msix").ToPrettySize(), ConsoleColor.Green);
+                Program.PrintColorMessage(Win32.GetFileSize($"{BuildOutputFolder}\\imagemanager-build-package-x64.msix").ToPrettySize(), ConsoleColor.Green);
             }
 
             //
@@ -2587,18 +2596,18 @@ namespace CustomBuildTool
             //
 
             if (
-                File.Exists($"{BuildOutputFolder}\\systeminformer-build-package-x32.msix") &&
-                File.Exists($"{BuildOutputFolder}\\systeminformer-build-package-x64.msix")
+                File.Exists($"{BuildOutputFolder}\\imagemanager-build-package-x32.msix") &&
+                File.Exists($"{BuildOutputFolder}\\imagemanager-build-package-x64.msix")
                 )
             {
                 Program.PrintColorMessage(BuildTimeSpan(), ConsoleColor.DarkGray, false, Flags);
-                Program.PrintColorMessage("Building systeminformer-build-package.msixbundle...", ConsoleColor.Cyan, false);
+                Program.PrintColorMessage("Building imagemanager-build-package.msixbundle...", ConsoleColor.Cyan, false);
 
                 {
                     using var bundleMap = new StreamWriter($"{BuildWorkingFolder}\\tools\\msix\\bundle.map", false, Utils.UTF8NoBOM);
                     bundleMap.WriteLine("[Files]");
-                    bundleMap.WriteLine($"\"{BuildOutputFolder}\\systeminformer-build-package-x32.msix\" \"systeminformer-build-package-x32.msix\"");
-                    bundleMap.WriteLine($"\"{BuildOutputFolder}\\systeminformer-build-package-x64.msix\" \"systeminformer-build-package-x64.msix\"");
+                    bundleMap.WriteLine($"\"{BuildOutputFolder}\\imagemanager-build-package-x32.msix\" \"imagemanager-build-package-x32.msix\"");
+                    bundleMap.WriteLine($"\"{BuildOutputFolder}\\imagemanager-build-package-x64.msix\" \"imagemanager-build-package-x64.msix\"");
                 }
 
                 string result = Utils.ExecuteMsixCommand(
@@ -2607,7 +2616,7 @@ namespace CustomBuildTool
                         "/f",
                         $"{BuildWorkingFolder}\\tools\\msix\\bundle.map",
                         "/p",
-                        $"{BuildOutputFolder}\\systeminformer-build-package.msixbundle"
+                        $"{BuildOutputFolder}\\imagemanager-build-package.msixbundle"
                     ]
                     );
 
@@ -2617,7 +2626,7 @@ namespace CustomBuildTool
                     return false;
                 }
 
-                Program.PrintColorMessage(Win32.GetFileSize($"{BuildOutputFolder}\\systeminformer-build-package.msixbundle").ToPrettySize(), ConsoleColor.Green);
+                Program.PrintColorMessage(Win32.GetFileSize($"{BuildOutputFolder}\\imagemanager-build-package.msixbundle").ToPrettySize(), ConsoleColor.Green);
             }
 
             if (File.Exists("tools\\msix\\PackageTemplate.appinstaller"))
@@ -2645,8 +2654,8 @@ namespace CustomBuildTool
                     {
                         Documents = new Dictionary<string, string>
                         {
-                            ["*"] = $"https://raw.githubusercontent.com/winsiderss/systeminformer/{Build.BuildCommitHash}/*",
-                            [$"{Path.Join([Build.BuildWorkingFolder, "\\"])}*"] = $"https://raw.githubusercontent.com/winsiderss/systeminformer/{Build.BuildCommitHash}/*"
+                            ["*"] = $"https://raw.githubusercontent.com/winsiderss/imagemanager/{Build.BuildCommitHash}/*",
+                            [$"{Path.Join([Build.BuildWorkingFolder, "\\"])}*"] = $"https://raw.githubusercontent.com/winsiderss/imagemanager/{Build.BuildCommitHash}/*"
                         }
                     };
 

@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2022 Winsider Seminars & Solutions, Inc.  All rights reserved.
  *
- * This file is part of System Informer.
+ * This file is part of Image Manager.
  *
  * Authors:
  *
@@ -575,7 +575,7 @@ INT_PTR CALLBACK EspServiceOtherDlgProc(
                         config.dwCommonButtons = TDCBF_YES_BUTTON | TDCBF_NO_BUTTON;
                         config.nDefaultButton = IDNO;
                         config.hwndParent = WindowHandle;
-                        config.pszWindowTitle = SystemInformer_GetWindowName();
+                        config.pszWindowTitle = ImageManager_GetWindowName();
                         config.pszMainIcon = TD_WARNING_ICON;
                         config.pszMainInstruction = L"Setting service protection will prevent the service from being controlled, modified, or deleted.";
                         config.pszContent = L"Do you want to continue?";

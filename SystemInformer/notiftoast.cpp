@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2022 Winsider Seminars & Solutions, Inc.  All rights reserved.
  *
- * This file is part of System Informer.
+ * This file is part of Image Manager.
  *
  * Authors:
  *
@@ -133,7 +133,7 @@ namespace PH
     using IToastFailedHandler = ITypedEventHandler<ToastNotification*, ToastFailedEventArgs*>;
 
     /*!
-        @brief System Informer toast event handler, this class implements the
+        @brief Image Manager toast event handler, this class implements the
          handler interfaces for IToastNotification and store the callback
          and context from the C interface.
     */
@@ -218,7 +218,7 @@ namespace PH
     };
 
     /*!
-        @brief System Informer toast object.
+        @brief Image Manager toast object.
     */
     class Toast
     {
@@ -782,7 +782,7 @@ static NTSTATUS PhpToastNotificationThread(
      in PH::Toast::Initialize.
 
     @code
-            hr = PhShowToast(L"System Informer",
+            hr = PhShowToast(L"Image Manager",
                              L"<toast>"
                              L"    <visual>"
                              L"       <binding template=\"ToastImageAndText02\">"

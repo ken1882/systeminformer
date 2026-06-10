@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2022 Winsider Seminars & Solutions, Inc.  All rights reserved.
  *
- * This file is part of System Informer.
+ * This file is part of Image Manager.
  *
  * Authors:
  *
@@ -21,7 +21,7 @@ static ULONG DiskTreeNewSortColumn = 0;
 static PH_SORT_ORDER DiskTreeNewSortOrder = NoSortOrder;
 static CONST PH_STRINGREF DiskPageText = PH_STRINGREF_INIT(L"Disk");
 static CONST PH_STRINGREF DiskBannerText = PH_STRINGREF_INIT(L"Search Disk");
-static CONST PH_STRINGREF DiskTreeEmptyText = PH_STRINGREF_INIT(L"Disk monitoring requires System Informer to be restarted with administrative privileges.");
+static CONST PH_STRINGREF DiskTreeEmptyText = PH_STRINGREF_INIT(L"Disk monitoring requires Image Manager to be restarted with administrative privileges.");
 static PPH_STRING DiskTreeErrorText = NULL;
 
 static PPH_HASHTABLE DiskNodeHashtable = NULL; // hashtable of all nodes
@@ -1315,12 +1315,12 @@ VOID EtHandleDiskCommand(
 
                     if (found)
                     {
-                        SystemInformer_SelectTabPage(0);
+                        ImageManager_SelectTabPage(0);
                         SystemInformer_SelectProcessNode(processNode);
                     }
                     else
                     {
-                        PhShowProcessRecordDialog(SystemInformer_GetWindowHandle(), diskItem->ProcessRecord);
+                        PhShowProcessRecordDialog(ImageManager_GetWindowHandle(), diskItem->ProcessRecord);
                     }
                 }
                 else
@@ -1588,7 +1588,7 @@ VOID NTAPI EtpDiskItemsUpdatedHandler(
     _In_opt_ PVOID Context
     )
 {
-    SystemInformer_Invoke(EtpOnDiskItemsUpdated, UlongToPtr(EtRunCount));
+    ImageManager_Invoke(EtpOnDiskItemsUpdated, UlongToPtr(EtRunCount));
 }
 
 /**
@@ -1755,7 +1755,7 @@ HWND NTAPI EtpToolStatusGetTreeNewHandle(
 //            switch (GET_WM_COMMAND_ID(wParam, lParam))
 //            {
 //            case IDC_RESTART:
-//                SystemInformer_PrepareForEarlyShutdown(PhMainWndHandle);
+//                ImageManager_PrepareForEarlyShutdown(PhMainWndHandle);
 //
 //                if (NT_SUCCESS(PhShellProcessHacker(
 //                    PhMainWndHandle,
@@ -1767,11 +1767,11 @@ HWND NTAPI EtpToolStatusGetTreeNewHandle(
 //                    NULL
 //                    )))
 //                {
-//                    SystemInformer_Destroy(PhMainWndHandle);
+//                    ImageManager_Destroy(PhMainWndHandle);
 //                }
 //                else
 //                {
-//                    SystemInformer_CancelEarlyShutdown(PhMainWndHandle);
+//                    ImageManager_CancelEarlyShutdown(PhMainWndHandle);
 //                }
 //
 //                break;

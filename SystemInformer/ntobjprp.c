@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2022 Winsider Seminars & Solutions, Inc.  All rights reserved.
  *
- * This file is part of System Informer.
+ * This file is part of Image Manager.
  *
  * Authors:
  *
@@ -674,7 +674,7 @@ VOID PhpShowProcessForMapping(
         // TODO would like this to show the process properties
         // memory tab and select the info->StartVa
         //
-        SystemInformer_ShowProcessProperties(processItem);
+        ImageManager_ShowProcessProperties(processItem);
         PhDereferenceObject(processItem);
     }
     else

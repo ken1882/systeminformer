@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2022 Winsider Seminars & Solutions, Inc.  All rights reserved.
  *
- * This file is part of System Informer.
+ * This file is part of Image Manager.
  *
  * Authors:
  *
@@ -118,7 +118,7 @@ VOID ToolbarUpdateFont(
     VOID
     )
 {
-    ToolbarWindowFont = SystemInformer_GetFont();
+    ToolbarWindowFont = ImageManager_GetFont();
 }
 
 /**
@@ -132,7 +132,7 @@ VOID ToolbarUpdateImageList(
 {
     if (!ToolBarImageList || DpiChanged)
     {
-        LONG windowDpi = SystemInformer_GetWindowDpi();
+        LONG windowDpi = ImageManager_GetWindowDpi();
 
         if (ToolStatusConfig.ToolBarLargeIcons)
         {
@@ -447,7 +447,7 @@ VOID SearchBoxUpdateRebarBand(
     if (!RebarHandle || !SearchboxHandle)
         return;
 
-    dpiValue = SystemInformer_GetWindowDpi();
+    dpiValue = ImageManager_GetWindowDpi();
     height = ToolbarGetCommandBarButtonHeight();
 
     if (height <= 0)
@@ -1341,7 +1341,7 @@ VOID ToolbarLoadDefaultButtonSettings(
     VOID
     )
 {
-    LONG dpiValue = SystemInformer_GetWindowDpi();
+    LONG dpiValue = ImageManager_GetWindowDpi();
 
     // Pre-cache the images in the Toolbar array.
 
@@ -1424,7 +1424,7 @@ VOID ToolbarLoadButtonSettings(
     }
 
     count = (ULONG)countInteger;
-    dpiValue = SystemInformer_GetWindowDpi();
+    dpiValue = ImageManager_GetWindowDpi();
 
     // Preserve the previous behaviour for an explicitly empty layout without
     // performing a zero-sized stack allocation. (dmex)
