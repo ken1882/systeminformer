@@ -77,7 +77,7 @@ set(RESOURCES
     "resources/search_modern_light.svg"
     "resources/search_stop_modern_dark.svg"
     "resources/search_stop_modern_light.svg"
-    "resources/imagemanager.png"
+    "resources/systeminformer.png"
     "SystemInformer.ico"
 )
 source_group("Resource Files" FILES ${RESOURCES})

@@ -30,8 +30,8 @@ namespace CustomBuildTool
         private static bool Arm64BuildToolsSkipPrinted;
         public static string BuildOutputFolder = string.Empty;
         public static string BuildWorkingFolder = string.Empty;
-        public static string BuildCommitBranch = "orphan";
-        public static string BuildCommitHash = new('0', 40);
+        public static string BuildCommitBranch = string.Empty;
+        public static string BuildCommitHash = string.Empty;
         public static string BuildShortVersion = "0.0.0";
         public static string BuildLongVersion = "0.0.0.0";
         public static string BuildSourceLink = string.Empty;

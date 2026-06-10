@@ -107,9 +107,20 @@ jobs:
     - name: Build Solution
       shell: cmd
       working-directory: ${{github.workspace}}
-      run: build\build_release.cmd
+      run: tools\CustomBuildTool\bin\Release\amd64\CustomBuildTool.exe -bin
+
+    - name: Upload portable packages
+      uses: actions/upload-artifact@v4
+      with:
+        name: imagemanager-portable
+        path: |
+          build/output/imagemanager-build-win32-bin.zip
+          build/output/imagemanager-build-win64-bin.zip
+          build/output/imagemanager-build-bin.zip
+        if-no-files-found: error
 
   build-driver:
+    if: ${{ github.event_name == 'workflow_dispatch' }}
     permissions:
       contents: read
     strategy:
@@ -152,6 +163,7 @@ jobs:
       run: build\build_zdriver.cmd prefast
 
   build-driver-release:
+    if: ${{ github.event_name == 'workflow_dispatch' }}
     permissions:
       contents: read
     strategy:
