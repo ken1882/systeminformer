@@ -170,7 +170,7 @@ PhPluginInvokeWindowCallback(
     ((PPH_EMENU)PhPluginInvokeWindowCallback(PH_MAINWINDOW_CALLBACK_TYPE_GET_MAIN_SUBMENU, (PVOID)(ULONG_PTR)(Index), 0))
 #define ImageManager_SetMainSubCmd(Index, Context) \
     PhPluginInvokeWindowCallback(PH_MAINWINDOW_CALLBACK_TYPE_SET_MAIN_SUBCMD, (PVOID)(ULONG_PTR)(Index), (PVOID)Context)
-#define SystemInformer_ShowMiniInfoSection(Data) \
+#define ImageManager_ShowMiniInfoSection(Data) \
     PhPluginInvokeWindowCallback(PH_MAINWINDOW_CALLBACK_TYPE_SHOW_MINIINFO_SECTION, 0, (PVOID)(ULONG_PTR)(Data))
 
 #define PhWindowsVersion ImageManager_GetWindowsVersion() // Temporary backwards compat (dmex)

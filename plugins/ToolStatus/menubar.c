@@ -391,7 +391,7 @@ BOOLEAN ToolStatusMenuBarTrackPopupMenu(
 
         TSMENU_DPRINTF("TrackPopupMenu loop item=%ld", itemIndex);
 
-        menu = SystemInformer_GetMainSubMenu(itemIndex);
+        menu = ImageManager_GetMainSubMenu(itemIndex);
 
         if (!menu || !ToolStatusMenuBarGetButtonRect(itemIndex, &buttonRect))
         {
@@ -508,7 +508,7 @@ BOOLEAN ToolStatusMenuBarTrackPopupMenu(
     if (selectedMenuItem)
     {
         TSMENU_DPRINTF("TrackPopupMenu dispatch id=%lu context=%p", selectedMenuItem->Id, selectedMenuItem);
-        SystemInformer_SetMainSubCmd(selectedMenuItem->Id, selectedMenuItem);
+        ImageManager_SetMainSubCmd(selectedMenuItem->Id, selectedMenuItem);
     }
 
     if (selectedMenu)
@@ -830,7 +830,7 @@ BOOLEAN ToolStatusMenuBarLoadMenu(
     {
         PPH_EMENU menu;
 
-        menu = SystemInformer_GetMainMenu();
+        menu = ImageManager_GetMainMenu();
 
         if (!menu || !menu->Items)
         {

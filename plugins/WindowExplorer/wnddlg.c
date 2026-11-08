@@ -800,9 +800,9 @@ BOOLEAN WepExecuteWindowCommand(
             {
                 if (processNode = PhFindProcessNode(processItem->ProcessId))
                 {
-                    SystemInformer_SelectTabPage(0);
-                    SystemInformer_SelectProcessNode(processNode);
-                    SystemInformer_ToggleVisible(FALSE);
+                    ImageManager_SelectTabPage(0);
+                    ImageManager_SelectProcessNode(processNode);
+                    ImageManager_ToggleVisible(FALSE);
                 }
 
                 PhDereferenceObject(processItem);
@@ -1706,8 +1706,8 @@ INT_PTR CALLBACK WepWindowsDlgProc(
                             if (processNode = PhFindProcessNode(processItem->ProcessId))
                             {
                                 ImageManager_SelectTabPage(0);
-                                SystemInformer_SelectProcessNode(processNode);
-                                SystemInformer_ToggleVisible(FALSE);
+                                ImageManager_SelectProcessNode(processNode);
+                                ImageManager_ToggleVisible(FALSE);
                             }
 
                             PhDereferenceObject(processItem);

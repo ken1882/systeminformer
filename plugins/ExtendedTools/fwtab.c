@@ -1963,7 +1963,7 @@ VOID EtFwHandleFwCommand(
 
             if (entry = EtFwGetSelectedFwItem())
             {
-                EtFwShowPingWindow(SystemInformer_GetWindowHandle(), entry->RemoteEndpoint);
+                EtFwShowPingWindow(ImageManager_GetWindowHandle(), entry->RemoteEndpoint);
             }
         }
         break;
@@ -1973,7 +1973,7 @@ VOID EtFwHandleFwCommand(
 
             if (entry = EtFwGetSelectedFwItem())
             {
-                EtFwShowTracerWindow(SystemInformer_GetWindowHandle(), entry->RemoteEndpoint);
+                EtFwShowTracerWindow(ImageManager_GetWindowHandle(), entry->RemoteEndpoint);
             }
         }
         break;
@@ -1983,7 +1983,7 @@ VOID EtFwHandleFwCommand(
 
             if (entry = EtFwGetSelectedFwItem())
             {
-                EtFwShowWhoisWindow(SystemInformer_GetWindowHandle(), entry->RemoteEndpoint);
+                EtFwShowWhoisWindow(ImageManager_GetWindowHandle(), entry->RemoteEndpoint);
             }
         }
         break;
@@ -1996,8 +1996,8 @@ VOID EtFwHandleFwCommand(
             {
                 if (processNode = PhFindProcessNode(UlongToHandle(entry->ProcessId)))
                 {
-                    SystemInformer_SelectTabPage(0);
-                    SystemInformer_SelectProcessNode(processNode);
+                    ImageManager_SelectTabPage(0);
+                    ImageManager_SelectProcessNode(processNode);
                 }
                 else
                 {

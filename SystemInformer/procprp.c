@@ -1843,11 +1843,11 @@ static BOOLEAN NTAPI PhpProcessPropertiesNewPreTranslate(
     switch (Message->wParam)
     {
     case VK_F5:
-        SystemInformer_Refresh();
+        ImageManager_Refresh();
         return TRUE;
     case VK_F6:
     case VK_PAUSE:
-        SystemInformer_SetUpdateAutomatically(!SystemInformer_GetUpdateAutomatically());
+        ImageManager_SetUpdateAutomatically(!ImageManager_GetUpdateAutomatically());
         return TRUE;
     }
 

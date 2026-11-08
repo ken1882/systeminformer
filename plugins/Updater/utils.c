@@ -45,7 +45,7 @@ NTSTATUS UpdateShellExecute(
     parameters = PH_AUTO(PhQuoteCommandLine(&parameters->sr, TRUE));
     parameters = PH_AUTO(PhConcatStrings2(L"-update ", PhGetString(parameters)));
 
-    SystemInformer_PrepareForEarlyShutdown();
+    ImageManager_PrepareForEarlyShutdown();
 
     status = PhShellExecuteEx(
         WindowHandle,
@@ -70,11 +70,11 @@ NTSTATUS UpdateShellExecute(
     {
         Context->Cleanup = FALSE;
 
-        SystemInformer_Destroy();
+        ImageManager_Destroy();
     }
     else
     {
-        SystemInformer_CancelEarlyShutdown();
+        ImageManager_CancelEarlyShutdown();
 
         if (status != STATUS_CANCELLED) // Ignore UAC decline.
         {

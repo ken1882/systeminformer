@@ -1316,7 +1316,7 @@ VOID EtHandleDiskCommand(
                     if (found)
                     {
                         ImageManager_SelectTabPage(0);
-                        SystemInformer_SelectProcessNode(processNode);
+                        ImageManager_SelectProcessNode(processNode);
                     }
                     else
                     {

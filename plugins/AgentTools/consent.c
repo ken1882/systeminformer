@@ -366,7 +366,7 @@ HICON AtpCreateRequestIcon(
     if (!clientImageName)
         return NULL;
 
-    dpi = PhGetWindowDpi(SystemInformer_GetWindowHandle());
+    dpi = PhGetWindowDpi(ImageManager_GetWindowHandle());
     largeSize = PhGetSystemMetrics(SM_CXICON, dpi);
     smallSize = PhGetSystemMetrics(SM_CXSMICON, dpi);
 

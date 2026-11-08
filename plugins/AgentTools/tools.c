@@ -814,7 +814,7 @@ VOID AtAddSnapshot(
     else
         AtJsonAddNull(Object, "snapshot_time");
 
-    PhAddJsonObjectBoolean(Object, "updates_paused", !SystemInformer_GetUpdateAutomatically());
+    PhAddJsonObjectBoolean(Object, "updates_paused", !ImageManager_GetUpdateAutomatically());
 }
 
 _Success_(return)

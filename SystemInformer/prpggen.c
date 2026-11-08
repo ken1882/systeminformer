@@ -900,7 +900,7 @@ INT_PTR CALLBACK PhpProcessGeneralDlgProc(
 
                     if (parentProcessItem = PhReferenceProcessItem(consoleHostProcessId))
                     {
-                        SystemInformer_ShowProcessProperties(parentProcessItem);
+                        ImageManager_ShowProcessProperties(parentProcessItem);
                         PhDereferenceObject(parentProcessItem);
                     }
                     else

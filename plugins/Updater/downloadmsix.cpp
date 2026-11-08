@@ -293,7 +293,7 @@ NTSTATUS UpdaterMsixDownloadAndInstall(
     // request that may show platform UI.
     if (HR_SUCCESS(storeContext->QueryInterface(IID_PPV_ARGS(&initializeWithWindow))))
     {
-        initializeWithWindow->Initialize(SystemInformer_GetWindowHandle());
+        initializeWithWindow->Initialize(ImageManager_GetWindowHandle());
     }
 
     // RequestDownloadAndInstallStorePackageUpdatesAsync takes an IIterable.
