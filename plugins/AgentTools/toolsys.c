@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2022 Winsider Seminars & Solutions, Inc.  All rights reserved.
  *
- * This file is part of System Informer.
+ * This file is part of Image Manager.
  *
  * Authors:
  *
@@ -347,7 +347,7 @@ VOID AtpSystemInformerStatus(
 
     structured = PhCreateJsonObject();
     PhAddJsonObjectBoolean(structured, "running", TRUE);
-    PhAddJsonObject(structured, "message", "System Informer is running.");
+    PhAddJsonObject(structured, "message", "Image Manager is running.");
 
     if (version = PhGetBuildVersion())
     {

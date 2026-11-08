@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2022 Winsider Seminars & Solutions, Inc.  All rights reserved.
  *
- * This file is part of System Informer.
+ * This file is part of Image Manager.
  *
  * Authors:
  *
@@ -1651,7 +1651,7 @@ VOID AtpGetDriverObject(
             Result,
             "failed",
             STATUS_NOT_SUPPORTED,
-            L"Driver and device objects are read through the System Informer driver at maximum "
+            L"Driver and device objects are read through the Image Manager driver at maximum "
             L"access, which is not available to this instance (access level: %s).",
             AtKphLevelString(KsiLevel())
             );

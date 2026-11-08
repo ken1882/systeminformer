@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2022 Winsider Seminars & Solutions, Inc.  All rights reserved.
  *
- * This file is part of System Informer.
+ * This file is part of Image Manager.
  *
  * Authors:
  *
@@ -779,7 +779,7 @@ VOID AtpGetProcessGpuStats(
             Result,
             "unavailable",
             STATUS_NOT_SUPPORTED,
-            L"GPU monitoring is not running in this System Informer instance."
+            L"GPU monitoring is not running in this Image Manager instance."
             );
         AtDeleteTarget(&target);
         return;

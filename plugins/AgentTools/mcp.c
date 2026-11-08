@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2022 Winsider Seminars & Solutions, Inc.  All rights reserved.
  *
- * This file is part of System Informer.
+ * This file is part of Image Manager.
  *
  * Authors:
  *
@@ -190,7 +190,7 @@ PVOID AtpCreateServerInfo(
 
     serverInfo = PhCreateJsonObject();
     PhAddJsonObject(serverInfo, "name", "SystemInformer");
-    PhAddJsonObject(serverInfo, "title", "System Informer");
+    PhAddJsonObject(serverInfo, "title", "Image Manager");
 
     if (version = PhGetBuildVersion())
     {
@@ -862,7 +862,7 @@ VOID AtpHandleToolsCall(
     }
     else if (!AtIsToolEnabled(tool))
     {
-        AtSetToolError(&result, "disabled", STATUS_SUCCESS, L"This tool is disabled in System Informer's AgentTools options.");
+        AtSetToolError(&result, "disabled", STATUS_SUCCESS, L"This tool is disabled in Image Manager's AgentTools options.");
     }
     else
     {
@@ -896,7 +896,7 @@ VOID AtpHandleToolsCall(
                 AtSetToolError(&result, "consent_declined", STATUS_SUCCESS, L"The confirmation was declined or cancelled.");
                 break;
             case AtConsentElicitationRequired:
-                AtSetToolError(&result, "elicitation_required", STATUS_SUCCESS, L"System Informer is configured to delegate confirmation to the client, but this client does not support elicitation. Enable confirmation in System Informer's AgentTools options or use a client with elicitation support.");
+                AtSetToolError(&result, "elicitation_required", STATUS_SUCCESS, L"Image Manager is configured to delegate confirmation to the client, but this client does not support elicitation. Enable confirmation in Image Manager's AgentTools options or use a client with elicitation support.");
                 break;
             default:
                 AtSetToolError(&result, "consent_failed", STATUS_SUCCESS, L"The confirmation could not be completed.");
@@ -969,7 +969,7 @@ VOID AtpHandleResourcesRead(
     if (!AtIsToolEnabled(tool))
     {
         AtpSendError(Connection, IdJson, AT_JSONRPC_INVALID_PARAMS,
-            "The tool behind this resource is disabled in System Informer's AgentTools options", NULL);
+            "The tool behind this resource is disabled in Image Manager's AgentTools options", NULL);
         PhDereferenceObject(uri);
         return;
     }
@@ -1421,7 +1421,7 @@ PVOID AtpCreateElicitationParams(
     if (Action->Tier == AtTierWrite)
     {
         message = PhFormatString(
-            L"System Informer: allow the connected agent to %s%s%s?\n\n%s\n\nRequested by: %s\n\nThis request was made by an AI agent through System Informer. Confirm only if you intended it.",
+            L"Image Manager: allow the connected agent to %s%s%s?\n\n%s\n\nRequested by: %s\n\nThis request was made by an AI agent through Image Manager. Confirm only if you intended it.",
             Action->Verb,
             Target && Target->Parameter ? L" to " : L"",
             Target && Target->Parameter ? PhGetString(Target->Parameter) : L"",
@@ -1432,7 +1432,7 @@ PVOID AtpCreateElicitationParams(
     else if (Action->Tier == AtTierSensitiveRead)
     {
         message = PhFormatString(
-            L"System Informer: allow the connected agent to %s for the rest of this session?\n\nFirst target: %s\n\nRequested by: %s\n\nConfirm only if you intended it.",
+            L"Image Manager: allow the connected agent to %s for the rest of this session?\n\nFirst target: %s\n\nRequested by: %s\n\nConfirm only if you intended it.",
             Action->Verb,
             PhGetStringOrDefault(target, L"(none)"),
             PhGetString(caller)
@@ -1441,7 +1441,7 @@ PVOID AtpCreateElicitationParams(
     else if (Action->Tier == AtTierNetworkEgress)
     {
         message = PhFormatString(
-            L"System Informer: allow the connected agent to %s%s%s?\n\nRequested by: %s\n\nThis sends the request off this machine to a service on the internet. Confirm only if you intended it.",
+            L"Image Manager: allow the connected agent to %s%s%s?\n\nRequested by: %s\n\nThis sends the request off this machine to a service on the internet. Confirm only if you intended it.",
             Action->Verb,
             Target && Target->Parameter ? L" " : L"",
             Target && Target->Parameter ? PhGetString(Target->Parameter) : L"",
@@ -1451,7 +1451,7 @@ PVOID AtpCreateElicitationParams(
     else
     {
         message = PhFormatString(
-            L"System Informer: allow the connected agent to %s for the rest of this session?\n\nRequested by: %s\n\nConfirm only if you intended it.",
+            L"Image Manager: allow the connected agent to %s for the rest of this session?\n\nRequested by: %s\n\nConfirm only if you intended it.",
             Action->Verb,
             PhGetString(caller)
             );

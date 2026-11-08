@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2022 Winsider Seminars & Solutions, Inc.  All rights reserved.
  *
- * This file is part of System Informer.
+ * This file is part of Image Manager.
  *
  * Authors:
  *
@@ -1798,7 +1798,7 @@ VOID AtpGetProcessJob(
 
             message = PhFormatString(
                 L"The process is in a job, but opening one has no user-mode route: it comes from the "
-                L"System Informer driver, which is not available to this instance (access level: %s).",
+                L"Image Manager driver, which is not available to this instance (access level: %s).",
                 AtKphLevelString(KsiLevel())
                 );
 
@@ -1887,7 +1887,7 @@ VOID AtpGetProcessKsiState(
             Result,
             "failed",
             STATUS_NOT_SUPPORTED,
-            L"This is the System Informer driver's own view of a process and there is no user-mode "
+            L"This is the Image Manager driver's own view of a process and there is no user-mode "
             L"equivalent; the driver is not available to this instance (access level: %s).",
             AtKphLevelString(KsiLevel())
             );
@@ -1959,7 +1959,7 @@ VOID AtpGetProcessKsiState(
     }
 
     // The allowed masks are not reported: they exist only for a process the driver protects, which
-    // is System Informer's own.
+    // is Image Manager's own.
 
     AtAddSnapshot(structured);
     Result->StructuredContent = structured;

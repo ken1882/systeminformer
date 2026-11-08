@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2022 Winsider Seminars & Solutions, Inc.  All rights reserved.
  *
- * This file is part of System Informer.
+ * This file is part of Image Manager.
  *
  * Authors:
  *
@@ -163,7 +163,7 @@ VOID AtpGetAlpcPortInfo(
             Result,
             "failed",
             STATUS_NOT_SUPPORTED,
-            L"ALPC port information comes from the System Informer driver, which is not available to this instance (access level: %s).",
+            L"ALPC port information comes from the Image Manager driver, which is not available to this instance (access level: %s).",
             AtKphLevelString(KsiLevel())
             );
         AtSetToolHint(Result, AT_HINT_NEEDS_DRIVER);
@@ -811,7 +811,7 @@ VOID AtpGetHandleDetails(
                 Result,
                 dupStatus == STATUS_ACCESS_DENIED ? "access_denied" : "failed",
                 dupStatus,
-                L"Handle 0x%llx in pid %lu could not be duplicated and the System Informer driver is not available to read it in place (access level: %s).",
+                L"Handle 0x%llx in pid %lu could not be duplicated and the Image Manager driver is not available to read it in place (access level: %s).",
                 (ULONG64)(ULONG_PTR)Target->HandleValue,
                 HandleToUlong(Target->ProcessItem->ProcessId),
                 AtKphLevelString(KsiLevel())
@@ -1272,7 +1272,7 @@ VOID AtpGetSectionMappings(
             Result,
             "failed",
             STATUS_NOT_SUPPORTED,
-            L"Section mappings come from the System Informer driver, which is not available to this instance (access level: %s).",
+            L"Section mappings come from the Image Manager driver, which is not available to this instance (access level: %s).",
             AtKphLevelString(KsiLevel())
             );
         AtSetToolHint(Result, AT_HINT_NEEDS_DRIVER);

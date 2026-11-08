@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2022 Winsider Seminars & Solutions, Inc.  All rights reserved.
  *
- * This file is part of System Informer.
+ * This file is part of Image Manager.
  *
  * Authors:
  *
@@ -871,7 +871,7 @@ VOID AtpCompleteConnectionRequest(
     {
         PhShowIconNotification(
             L"Agent connection denied",
-            L"An agent connected to System Informer and nobody allowed it in time. It was disconnected."
+            L"An agent connected to Image Manager and nobody allowed it in time. It was disconnected."
             );
     }
 
@@ -918,7 +918,7 @@ NTSTATUS NTAPI AtpConsentDialogWorker(
         config.cbSize = sizeof(TASKDIALOGCONFIG);
         config.hInstance = PluginInstance->DllBase;
         config.dwFlags = TDF_ALLOW_DIALOG_CANCELLATION | TDF_CALLBACK_TIMER | TDF_SIZE_TO_CONTENT;
-        config.pszWindowTitle = L"System Informer";
+        config.pszWindowTitle = L"Image Manager";
 
         // The broker's icon badged with a shield; the stock shield when it cannot be read.
         if (request->MainIcon)
@@ -1124,7 +1124,7 @@ AT_CONSENT_RESULT AtpAskUser(
     {
         PhShowIconNotification(
             L"Agent request denied",
-            L"An agent asked System Informer to perform an action and nobody confirmed it in time. The request was denied."
+            L"An agent asked Image Manager to perform an action and nobody confirmed it in time. The request was denied."
             );
     }
 

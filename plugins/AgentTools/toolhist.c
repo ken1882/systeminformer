@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2022 Winsider Seminars & Solutions, Inc.  All rights reserved.
  *
- * This file is part of System Informer.
+ * This file is part of Image Manager.
  *
  * Authors:
  *
@@ -231,7 +231,7 @@ VOID AtpGetSystemHistory(
 
     pageSize = basicInfo.PageSize;
 
-    // System Informer allocates per-CPU histories across every group, so this count never runs past
+    // Image Manager allocates per-CPU histories across every group, so this count never runs past
     // that array; per_cpu covers this group only.
     processorCount = basicInfo.NumberOfProcessors;
 

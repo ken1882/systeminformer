@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2022 Winsider Seminars & Solutions, Inc.  All rights reserved.
  *
- * This file is part of System Informer.
+ * This file is part of Image Manager.
  *
  * Authors:
  *
@@ -617,7 +617,7 @@ SIMCP_HELLO_STATUS AtpAuthenticateClient(
     if (!NT_SUCCESS(status))
         return SimcpHelloRejectedInternal;
 
-    // Same user as System Informer.
+    // Same user as Image Manager.
 
     if (!NT_SUCCESS(PhGetTokenUser(tokenHandle, &clientUser)) ||
         !NT_SUCCESS(PhGetTokenUser(NtCurrentProcessToken(), &ownUser)))
@@ -631,7 +631,7 @@ SIMCP_HELLO_STATUS AtpAuthenticateClient(
         goto CleanupExit;
     }
 
-    // Same session as System Informer. Pipe names are global; the session in the name is
+    // Same session as Image Manager. Pipe names are global; the session in the name is
     // a convention, not a boundary.
 
     if (!NT_SUCCESS(NtQueryInformationToken(tokenHandle, TokenSessionId, &sessionId, sizeof(sessionId), &(ULONG){ 0 })) ||
@@ -1039,7 +1039,7 @@ NTSTATUS AtServerStart(
     if (!NT_SUCCESS(status))
         goto CleanupExit;
 
-    // FILE_CREATE: a second instance of System Informer in this session, or a squatter, makes
+    // FILE_CREATE: a second instance of Image Manager in this session, or a squatter, makes
     // this fail and the options page says so.
     status = AtpCreatePipeInstance(TRUE, &pipeHandle);
 

@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2022 Winsider Seminars & Solutions, Inc.  All rights reserved.
  *
- * This file is part of System Informer.
+ * This file is part of Image Manager.
  *
  * Authors:
  *
@@ -72,7 +72,7 @@ LOGICAL DllMain(
                 return FALSE;
 
             info->DisplayName = L"Agent Tools";
-            info->Description = L"Exposes System Informer's process data and actions to AI agents over the Model Context Protocol.";
+            info->Description = L"Exposes Image Manager's process data and actions to AI agents over the Model Context Protocol.";
 
             PhRegisterCallback(
                 PhGetPluginCallback(PluginInstance, PluginCallbackLoad),
